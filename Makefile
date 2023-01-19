@@ -6,44 +6,58 @@
 #    By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/17 09:39:39 by aaugu             #+#    #+#              #
-#    Updated: 2023/01/17 10:19:51 by aaugu            ###   ########.fr        #
+#    Updated: 2023/01/17 15:19:22 by aaugu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 
-GNL_FILES = get_next_line.c get_next_line_utils.c
-GNL_SRCS = $(addprefix(get_next_line/, $(GNL_FILES)))
-
-SRCS = $(GNL_SRCS)
-
-OBJ_DIR = objs
-OBJS = $(SRCS:%.c=$(OBJ_DIR)/%.o)
-
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
-AR = ar rc
-RM = rm -rf
+FLAGS = -Wall -Wextra -Werror
 
-$(OBJ_DIR)/%.o:	%.c
-				$(CC) $(CFLAGS) -I./mlx -L./mlx -framework OpenGL -framework AppKit  $^ -o $(NAME)
+INCLUDES = -I includes -I libft -I mlx
+MLX_LIB = -Lmlx -framework OpenGL -framework AppKit
+LIB = -Llibft $(MLX_LIB)
+MLX = mlx/libmlx.a
+LIBFT = libft/libft.a
 
-all:			$(NAME)
+RM = rm -f
 
-bonus:			all
+SRCS_FILES = so_long.c
+SRCS = $(addprefix ./src/, $(SRCS_FILES))
 
-$(NAME):		$(OBJ_DIR) 
-				$(OBJS)
+OBJS = ${SRCS:%.c=%.o}
 
-$(OBJ_DIR):
-				mkdir $(OBJ_DIR)
+all:		$(NAME)
 
-clean:
-				$(RM) $(OBJ_DIR)
+$(NAME):	$(MLX) $(LIBFT) $(OBJS)
+			@echo " [ .. ] | Compiling so_long.."
+			$(CC) $(FLAGS) $(INCLUDES) $(LIB) $(OBJS) -o $(NAME)
+			@echo " [ OK ] | so_long ready!"
 
-fclean: 		clean
-				$(RM) $(NAME)
+$(MLX):
+			@echo " [ .. ] | Compiling minilibx.."
+			@make -s -C mlx
+			@echo " [ OK ] | Minilibx ready!"
 
-re: 			fclean all
+$(LIBFT):	
+			@echo " [ .. ] | Compiling libft.."
+			@make -s -C libft
+			@echo " [ OK ] | Libft ready!"
 
-.PHONY:			all bonus clean fclean re
+clean:		
+			@echo " [ .. ] | Cleaning objects.."
+			@make -s -C libft clean
+			@make -s -C mlx clean
+			@($(RM) $(OBJS))
+			@echo " [ OK ] | Objects removed!"
+
+fclean: 	clean
+			@echo " [ .. ] | Cleaning libraries and executable.."
+			@make -s -C libft fclean
+			@($(RM) $(NAME))
+			@echo " [ OK ] | Everything is clean!"
+
+re: 		fclean all
+
+.PHONY:		all clean fclean re

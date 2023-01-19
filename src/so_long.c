@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:09:59 by aaugu             #+#    #+#             */
-/*   Updated: 2023/01/19 14:16:13 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/01/19 15:34:40 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,23 @@ int	deal_key(int key, void *param)
 
 int	main(void)
 {
-	void	*mlx_ptr;
-	void	*win_ptr;
+	void	*mlx;
+	void	*window;
+	void	*img;
+	char	*img_path = "../images/grass1.xpm";
+	int		img_width = 16;
+	int		img_height = 16;
 
-	mlx_ptr = mlx_init();
-	win_ptr = mlx_new_window(mlx_ptr, 16 * 24, 16 * 10, "so_long");	
-	mlx_key_hook(win_ptr, deal_key, (void *)0);
-	mlx_loop(mlx_ptr);
+	mlx = mlx_init();
+	window = mlx_new_window(mlx, 16 * 24, 16 * 20, "so_long");
+
+	img = mlx_new_image(mlx, img_width, img_height);
+	img = mlx_xpm_file_to_image(mlx, img_path, &img_width, &img_height);
+	
+	// mlx_put_image_to_window (mlx, window, img, 0, 0);
+
+	mlx_loop(mlx);
+	
 	return (0);
 }
 

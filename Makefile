@@ -6,7 +6,7 @@
 #    By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/17 09:39:39 by aaugu             #+#    #+#              #
-#    Updated: 2023/01/17 15:19:22 by aaugu            ###   ########.fr        #
+#    Updated: 2023/01/19 09:46:30 by aaugu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ FLAGS = -Wall -Wextra -Werror
 INCLUDES = -I includes -I libft -I mlx
 MLX_LIB = -Lmlx -framework OpenGL -framework AppKit
 LIB = -Llibft $(MLX_LIB)
+
 MLX = mlx/libmlx.a
 LIBFT = libft/libft.a
 

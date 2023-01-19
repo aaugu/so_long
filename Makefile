@@ -1,23 +1,11 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/01/17 09:39:39 by aaugu             #+#    #+#              #
-#    Updated: 2023/01/19 09:46:30 by aaugu            ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 NAME = so_long
 
 CC = gcc
 FLAGS = -Wall -Wextra -Werror
 
 INCLUDES = -I includes -I libft -I mlx
-MLX_LIB = -Lmlx -framework OpenGL -framework AppKit
-LIB = -Llibft $(MLX_LIB)
+MLX_LIB = -L mlx -lmlx -framework OpenGL -framework AppKit
+LIB = -Llibft -lft $(MLX_LIB)
 
 MLX = mlx/libmlx.a
 LIBFT = libft/libft.a

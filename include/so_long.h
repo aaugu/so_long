@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 10:13:06 by aaugu             #+#    #+#             */
-/*   Updated: 2023/01/26 11:21:51 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/01/26 11:35:30 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,6 @@
 typedef int	t_bool;
 
 /* ---------------	CHECKS	--------------- */
+t_bool	is_extension_valid(const char *filename);
 
 #endif

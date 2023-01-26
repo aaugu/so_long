@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 13:36:29 by aaugu             #+#    #+#             */
-/*   Updated: 2023/01/26 12:09:32 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/01/26 16:32:56 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ int	create_square(int x, int y, void *mlx_ptr, void *win_ptr)
 			mlx_pixel_put(mlx_ptr, win_ptr, x, y, 0xc1d470);
 			x++;
 		}
-		if (y > 16)
-			break ;
 		x = 0;
 		y++;
 	}

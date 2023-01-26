@@ -6,38 +6,34 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:09:59 by aaugu             #+#    #+#             */
-/*   Updated: 2023/01/19 15:34:40 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/01/26 11:18:03 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../include/so_long.h"
 
-int	deal_key(int key, void *param)
-{
-	ft_putnbr_fd(key, 1);
-	ft_putchar_fd('\n', 1);
-	return (0);
-}
+// int	deal_key(int key, void *param)
+// {
+// 	ft_putnbr_fd(key, 1);
+// 	ft_putchar_fd('\n', 1);
+// 	return (0);
+// }
 
-int	main(void)
+int	main(int argc, char **argv)
 {
 	void	*mlx;
-	void	*window;
+	void	*win;
 	void	*img;
-	char	*img_path = "../images/grass1.xpm";
-	int		img_width = 16;
-	int		img_height = 16;
+	int		img_width;
+	int		img_height;
 
+	(void)argc;
+	(void)argv;
 	mlx = mlx_init();
-	window = mlx_new_window(mlx, 16 * 24, 16 * 20, "so_long");
-
-	img = mlx_new_image(mlx, img_width, img_height);
-	img = mlx_xpm_file_to_image(mlx, img_path, &img_width, &img_height);
-	
-	// mlx_put_image_to_window (mlx, window, img, 0, 0);
-
+	win = mlx_new_window(mlx, 500, 500, "my_mlx");
+	img = mlx_xpm_file_to_image(mlx, "images/grass1.xpm", &img_width, &img_height);
+	mlx_put_image_to_window(mlx, win, img, 50, 50);
 	mlx_loop(mlx);
-	
 	return (0);
 }
 

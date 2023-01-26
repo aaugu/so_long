@@ -3,7 +3,7 @@ NAME = so_long
 CC = gcc
 FLAGS = -Wall -Wextra -Werror
 
-INCLUDES = -I includes -I libft -I mlx
+INCLUDE = -I include -I libft -I mlx
 MLX_LIB = -L mlx -lmlx -framework OpenGL -framework AppKit
 LIB = -Llibft -lft $(MLX_LIB)
 
@@ -21,7 +21,7 @@ all:		$(NAME)
 
 $(NAME):	$(MLX) $(LIBFT) $(OBJS)
 			@echo " [ .. ] | Compiling so_long.."
-			$(CC) $(FLAGS) $(INCLUDES) $(LIB) $(OBJS) -o $(NAME)
+			$(CC) $(FLAGS) $(INCLUDE) $(LIB) $(OBJS) -o $(NAME)
 			@echo " [ OK ] | so_long ready!"
 
 $(MLX):

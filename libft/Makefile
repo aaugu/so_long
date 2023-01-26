@@ -6,13 +6,19 @@
 #    By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/24 12:03:36 by aaugu             #+#    #+#              #
-#    Updated: 2022/12/17 17:54:00 by aaugu            ###   ########.fr        #
+#    Updated: 2023/01/26 11:08:46 by aaugu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
-SRCS = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c  ft_isprint.c \
+CC = gcc
+FLAGS = -Wall -Wextra -Werror
+INCLUDE = -I include
+AR = ar rc
+RM = rm -rf
+
+LIBFT_FILES = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c  ft_isprint.c \
 ft_strlen.c ft_memset.c ft_bzero.c ft_memcpy.c ft_memmove.c  ft_strlcpy.c \
 ft_strlcat.c ft_toupper.c ft_tolower.c ft_strchr.c ft_strrchr.c ft_strncmp.c \
 ft_memchr.c ft_memcmp.c ft_strnstr.c ft_atoi.c ft_calloc.c ft_strdup.c \
@@ -20,34 +26,32 @@ ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c ft_itoa.c ft_strmapi.c \
 ft_striteri.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c \
 ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c \
 ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
+LIBFT_SRCS = $(addprefix libft/, $(LIBFT_FILES))
 
-OBJ_DIR = objs
-OBJS = ${SRCS:%.c=${OBJ_DIR}/%.o}
+FT_PRINTF_FILES = ft_printf.c print_c.c print_s.c print_p.c print_int.c \
+print_u.c print_x.c
+FT_PRINTF_SRCS = $(addprefix ft_printf/, $(FT_PRINTF_FILES))
 
-GCC = gcc
-CFLAGS = -Wall -Wextra -Werror
-AR = ar rc
-RM = rm -rf
+GET_NEXT_LINE_FILES = get_next_line.c
+GET_NEXT_LINE_SRCS = $(addprefix get_next_line/, $(GET_NEXT_LINE_FILES))
 
-$(OBJ_DIR)/%.o:	%.c
-				$(CC) $(CFLAGS) -c $< -o $@
+SRCS = $(LIBFT_SRCS) $(FT_PRINTF_SRCS) $(GET_NEXT_LINE_SRCS)
+OBJS = $(SRCS:%.c=%.o)
 
-all: 			${NAME}
+%.o:		%.c
+			$(CC) $(CFLAGS) -c $< -o $@
 
-bonus:			all
+all: 		$(NAME)
 
-${NAME}:		${OBJ_DIR} ${OBJS}
-				${AR} ${NAME} ${OBJS}
-
-${OBJ_DIR}:
-				mkdir ${OBJ_DIR}
+$(NAME):	$(OBJS)
+			$(AR) $(NAME) $(OBJS)
 
 clean:
-				${RM} ${OBJ_DIR}
+			$(RM) $(OBJS)
 
-fclean: 		clean
-				${RM} ${NAME}
+fclean: 	clean
+			$(RM) $(NAME)
 
-re: 			fclean all
+re: 		fclean all
 
-.PHONY:			all bonus clean fclean re
+.PHONY:		all clean fclean re

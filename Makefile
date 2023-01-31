@@ -12,7 +12,7 @@ LIBFT = libft/libft.a
 
 RM = rm -f
 
-SRCS_FILES = so_long.c check_file.c
+SRCS_FILES = so_long.c check_file.c map_parsing.c
 SRCS = $(addprefix ./src/, $(SRCS_FILES))
 
 OBJS = ${SRCS:%.c=%.o}

@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 10:13:06 by aaugu             #+#    #+#             */
-/*   Updated: 2023/01/26 16:38:11 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/01/31 11:02:15 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,9 @@ typedef struct s_tileset
 
 }				t_tileset;
 
+/* ---------------	BOOLEAN	--------------- */
+# define TRUE 1
+
 /* ---------------	TILES SIZE	--------------- */
 # define TILE_SIZE	16
 
@@ -62,6 +65,9 @@ t_bool	is_readable(const char *filename);
 t_bool	is_extension_valid(const char *filename);
 
 /* ---------------	MAP PARSING	--------------- */
+char	**map_parsing(char *filename);
+int		count_lines(char *filename);
+char	**ft_freeall(char **strs);
 
 /* ---------------	MAP CHECKS	--------------- */
 t_bool	is_map_valid(char **map);

@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:09:59 by aaugu             #+#    #+#             */
-/*   Updated: 2023/01/31 11:53:30 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/01/31 14:01:05 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ int	main(int argc, char **argv)
 
 	mlx = mlx_init();
 	win = mlx_new_window(mlx, 500, 500, "so_long");
-	map_init(mlx, win);
 
 	img = mlx_xpm_file_to_image(mlx, "images/grass1.xpm", &img_w, &img_h);
 	mlx_put_image_to_window(mlx, win, img, 50, 50);

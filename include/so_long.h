@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 10:13:06 by aaugu             #+#    #+#             */
-/*   Updated: 2023/01/31 11:02:15 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/01/31 14:30:11 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,34 +20,57 @@
 
 typedef int	t_bool;
 
-typedef struct s_map
+typedef struct s_window
 {
-	int		player;
-	int		collectibles;
+	void	*mlx;
+	void	*win;
 	int		width;
 	int		height;
 	char	**layout;
+}				t_window;
 
+typedef struct s_map
+{
+	int		width;
+	int		height;
+	char	**layout;
 }				t_map;
 
 typedef struct s_tileset
 {
-	void	*collectible;
-	void	*door_close;
-	void	*door_open;
-	void	*enemy_down;
-	void	*enemy_up;
+	void	*apple;
+	void	*player;
+	void	*slime;
+	void	*exit;
 	void	*grass;
+	void	*wall;
+}				t_tileset;
+
+typedef struct s_data
+{
+	int		nb_player;
+	int		nb_apples;
+	int		nb_exit;
+}				t_data;
+
+typedef struct s_player
+{
 	void	*player_back;
 	void	*player_front;
 	void	*player_left;
 	void	*player_right;
-	void	*wall;
+}				t_player;
 
-}				t_tileset;
+typedef struct s_slime
+{
+	void	*slime_down;
+	void	*slime_up;
+}				t_slime;
 
-/* ---------------	BOOLEAN	--------------- */
-# define TRUE 1
+typedef struct s_door {
+	void	*door_close;
+	void	*door_open;
+}				t_door;
 
 /* ---------------	TILES SIZE	--------------- */
 # define TILE_SIZE	16
@@ -60,8 +83,6 @@ typedef struct s_tileset
 # define KEY_ESC 53
 
 /* ---------------	FILE CHECKS	--------------- */
-t_bool	is_file_valid(const char *filename);
-t_bool	is_readable(const char *filename);
 t_bool	is_extension_valid(const char *filename);
 
 /* ---------------	MAP PARSING	--------------- */

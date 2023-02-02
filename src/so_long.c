@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:09:59 by aaugu             #+#    #+#             */
-/*   Updated: 2023/01/31 14:01:05 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/02/02 13:25:32 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,17 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 	{
-		ft_printf("Error\nWrong number of arguments\n");
+		ft_printf("Error\nWrong number of arguments.\n");
 		return (0);
 	}
 	if (!is_extension_valid(argv[1]))
 		return (0);
 	map = map_parsing(argv[1]);
-	if (!map)
+	if (!map || !is_map_valid(map))
 		return (0);
 	while (y < 5)
 	{
-		while (x < 13)
+		while (x < 14)
 		{
 			mlx_put_image_to_window(mlx, win, grass, x * TILE_SIZE, y * TILE_SIZE);
 			ft_printf("%c", map[y][x]);

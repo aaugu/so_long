@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 10:24:53 by aaugu             #+#    #+#             */
-/*   Updated: 2023/01/31 13:32:06 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/02/02 10:37:33 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,16 @@ char	**map_parsing(char *filename)
 	map = (char **)malloc(sizeof(char *) * (line_nb + 1));
 	if (!map)
 		return (NULL);
+	map[line_nb] = NULL;
 	fd = open(filename, O_RDONLY);
 	i = 0;
 	while (i < line_nb)
 	{
 		line = get_next_line(fd);
-		map[i] = ft_strdup(line);
+		map[i] = ft_substr(line, 0, ft_strlen(line) - 1);
 		if (!map[i] || map[i++] == 0)
 			return (ft_freeall(map));
 	}
-	map[line_nb] = NULL;
 	return (map);
 }
 

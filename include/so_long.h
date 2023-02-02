@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 10:13:06 by aaugu             #+#    #+#             */
-/*   Updated: 2023/01/31 14:30:11 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/02/02 14:00:12 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ typedef struct s_tileset
 {
 	void	*apple;
 	void	*player;
-	void	*slime;
 	void	*exit;
 	void	*grass;
 	void	*wall;
@@ -52,25 +51,6 @@ typedef struct s_data
 	int		nb_apples;
 	int		nb_exit;
 }				t_data;
-
-typedef struct s_player
-{
-	void	*player_back;
-	void	*player_front;
-	void	*player_left;
-	void	*player_right;
-}				t_player;
-
-typedef struct s_slime
-{
-	void	*slime_down;
-	void	*slime_up;
-}				t_slime;
-
-typedef struct s_door {
-	void	*door_close;
-	void	*door_open;
-}				t_door;
 
 /* ---------------	TILES SIZE	--------------- */
 # define TILE_SIZE	16
@@ -94,6 +74,7 @@ char	**ft_freeall(char **strs);
 t_bool	is_map_valid(char **map);
 t_bool	is_rectangular(char **map);
 t_bool	is_closed(char **map);
+t_bool	is_closed_horizontal(char *map);
 t_bool	is_solvable(char **map);
 t_bool	has_all_elements(char **map);
 

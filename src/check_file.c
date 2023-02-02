@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 11:18:35 by aaugu             #+#    #+#             */
-/*   Updated: 2023/01/31 10:04:55 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/02/02 13:29:49 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ t_bool	is_extension_valid(const char *filename)
 	int		i;
 	char	*extension;
 
-	extension = ft_strchr(filename, '.');
-	if (!extension || ft_strlen(filename) < 5)
+	extension = ft_strrchr(filename, '.');
+	if (!extension || ft_strlen(extension) > 4)
 	{
-		ft_printf("Error, file extension is not valid\n");
+		ft_printf("Error, file extension is not valid. Try again\n");
 		return (0);
 	}
 	if (ft_strcmp(extension, ".ber") == 0)

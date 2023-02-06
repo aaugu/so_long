@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 10:13:06 by aaugu             #+#    #+#             */
-/*   Updated: 2023/02/06 11:08:43 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/02/06 11:17:27 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,18 +74,15 @@ typedef struct s_data
 
 /* ---------------	FILE CHECKS	--------------- */
 t_bool	is_all_valid(const char *filename);
-
 t_bool	is_extension_valid(const char *filename);
 
 /* ---------------	MAP PARSING	--------------- */
 char	**map_parsing(char *filename);
-
 int		count_lines(char *filename);
 char	**ft_freeall(char **strs);
 
 /* ---------------	MAP REQUIREMENTS CHECK	--------------- */
 t_bool	is_map_valid(char **map);
-
 t_bool	is_rectangular(char **map);
 t_bool	is_closed(char **map);
 t_bool	is_closed_horizontal(char *map);
@@ -96,10 +93,11 @@ t_bool	is_solvable(char **map);
 
 /* ---------------	GAME INIT	--------------- */
 void	game_init(t_game game);
-
 void	set_mlx(t_game game);
 void	set_tileset(t_game game);
 void	set_data(t_game game);
+
+/* ---------------	GAME DISPLAY	--------------- */
 void	game_display(t_game game);
 void	put_image(t_game game, void *image, int x, int y);
 

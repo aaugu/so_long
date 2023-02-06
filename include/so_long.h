@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 10:13:06 by aaugu             #+#    #+#             */
-/*   Updated: 2023/02/06 14:33:14 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/02/06 16:10:33 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,12 +75,12 @@ typedef struct t_game
 /* ---------------	FILE CHECKS	--------------- */
 t_bool	is_all_valid(const char *filename, t_game *game);
 t_bool	is_extension_valid(const char *filename);
+void	map_data_init(t_game *game);
 
 /* ---------------	MAP PARSING	--------------- */
 char	**map_parsing(const char *filename);
 int		count_lines(const char *filename);
 char	**ft_freeall(char **strs);
-void	map_data_init(t_game *game);
 
 /* ---------------	MAP REQUIREMENTS CHECK	--------------- */
 t_bool	is_map_valid(char **map, t_game *game);
@@ -101,5 +101,9 @@ void	set_data(t_game *game);
 /* ---------------	GAME DISPLAY	--------------- */
 void	game_display(t_game *game);
 void	put_image(t_game *game, void *image, int x, int y);
+
+/* ---------------	KEY HOOK	--------------- */
+int		game_key_hook(int keycode, t_game *game);
+void	action(t_game *game, int x, int y);
 
 #endif

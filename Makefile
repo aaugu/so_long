@@ -17,7 +17,8 @@ SRCS_FILES = 	so_long.c \
 				check_map_parsing.c \
 				check_map_requirements.c \
 				game_init.c \
-				game_display.c
+				game_display.c \
+				game_key_hook.c
 
 SRCS = $(addprefix ./src/, $(SRCS_FILES))
 

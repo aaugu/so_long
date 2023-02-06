@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:09:59 by aaugu             #+#    #+#             */
-/*   Updated: 2023/02/06 13:32:33 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/02/06 16:11:08 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	game_init(game);
+	mlx_key_hook(game->mlx.win, game_key_hook, &game);
 	mlx_loop(game->mlx.mlx_p);
 	return (0);
 }

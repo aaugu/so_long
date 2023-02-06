@@ -6,13 +6,13 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 10:24:53 by aaugu             #+#    #+#             */
-/*   Updated: 2023/02/02 10:37:33 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/02/06 11:27:23 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-char	**map_parsing(char *filename)
+char	**map_parsing(const char *filename)
 {
 	char	**map;
 	char	*line;
@@ -39,7 +39,7 @@ char	**map_parsing(char *filename)
 	return (map);
 }
 
-int	count_lines(char *filename)
+int	count_lines(const char *filename)
 {
 	int		fd;
 	int		count;

@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:09:59 by aaugu             #+#    #+#             */
-/*   Updated: 2023/02/06 11:17:51 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/02/06 12:15:51 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,17 @@
 
 int	main(int argc, char **argv)
 {
-	t_game	game;
+	t_game	*game;
 
 	if (argc != 2)
 	{
 		ft_printf("Error\nWrong number of arguments.\n");
 		return (0);
 	}
-	if (!is_all_valid(filename, game))
+	game = (t_game *)malloc(sizeof(t_game));
+	if (!is_all_valid(argv[1], game))
 		return (0);
 	game_init(game);
-	mlx_loop(game->mlx->mlx);
+	mlx_loop(game->mlx.mlx_p);
 	return (0);
 }

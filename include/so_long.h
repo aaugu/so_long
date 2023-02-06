@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 10:13:06 by aaugu             #+#    #+#             */
-/*   Updated: 2023/02/06 11:17:27 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/02/06 12:14:47 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,9 @@
 
 typedef int	t_bool;
 
-typedef struct s_game
-{
-	t_mlx		mlx;
-	t_map		map;
-	t_tileset	tileset;
-	t_data		data;
-}				t_game;
-
 typedef struct s_mlx
 {
-	void	*mlx;
+	void	*mlx_p;
 	void	*win;
 	int		w;
 	int		h;
@@ -62,6 +54,14 @@ typedef struct s_data
 	int		nb_exit;
 }				t_data;
 
+typedef struct t_game
+{
+	t_mlx		mlx;
+	t_map		map;
+	t_tileset	tileset;
+	t_data		data;
+}				t_game;
+
 /* ---------------	TILES SIZE	--------------- */
 # define TILE_SIZE	16
 
@@ -73,12 +73,12 @@ typedef struct s_data
 # define KEY_ESC 53
 
 /* ---------------	FILE CHECKS	--------------- */
-t_bool	is_all_valid(const char *filename);
+t_bool	is_all_valid(const char *filename, t_game *game);
 t_bool	is_extension_valid(const char *filename);
 
 /* ---------------	MAP PARSING	--------------- */
-char	**map_parsing(char *filename);
-int		count_lines(char *filename);
+char	**map_parsing(const char *filename);
+int		count_lines(const char *filename);
 char	**ft_freeall(char **strs);
 
 /* ---------------	MAP REQUIREMENTS CHECK	--------------- */
@@ -92,13 +92,13 @@ t_bool	is_complete(char **map);
 t_bool	is_solvable(char **map);
 
 /* ---------------	GAME INIT	--------------- */
-void	game_init(t_game game);
-void	set_mlx(t_game game);
-void	set_tileset(t_game game);
-void	set_data(t_game game);
+void	game_init(t_game *game);
+void	set_mlx(t_game *game);
+void	set_tileset(t_game *game);
+void	set_data(t_game *game);
 
 /* ---------------	GAME DISPLAY	--------------- */
-void	game_display(t_game game);
-void	put_image(t_game game, void *image, int x, int y);
+void	game_display(t_game *game, int x, int y);
+void	put_image(t_game *game, void *image, int x, int y);
 
 #endif

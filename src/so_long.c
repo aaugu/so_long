@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:09:59 by aaugu             #+#    #+#             */
-/*   Updated: 2023/02/06 12:15:51 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/02/06 13:32:33 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,11 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	game = (t_game *)malloc(sizeof(t_game));
-	if (!is_all_valid(argv[1], game))
+	if (!game || !is_all_valid(argv[1], game))
+	{
+		free(game);
 		return (0);
+	}
 	game_init(game);
 	mlx_loop(game->mlx.mlx_p);
 	return (0);

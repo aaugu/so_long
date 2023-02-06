@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 10:06:30 by aaugu             #+#    #+#             */
-/*   Updated: 2023/02/06 12:21:31 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/02/06 13:42:13 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,19 @@ void	set_mlx(t_game *game)
 
 void	set_tileset(t_game *game)
 {
-	int	img_s;
+	int	size;
 
-	img_s = TILE_SIZE;
-	game->tileset.apple = mlx_xpm_file_to_image(game->mlx.mlx_p, "imgs/apple.xpm", &img_s, &img_s);
-	game->tileset.exit = mlx_xpm_file_to_image(game->mlx.mlx_p, "imgs/exit_c.xpm", &img_s, &img_s);
-	game->tileset.grass = mlx_xpm_file_to_image(game->mlx.mlx_p, "imgs/grass.xpm", &img_s, &img_s);
-	game->tileset.player = mlx_xpm_file_to_image(game->mlx.mlx_p, "imgs/play_f.xpm", &img_s, &img_s);
-	game->tileset.wall = mlx_xpm_file_to_image(game->mlx.mlx_p, "imgs/wall.xpm", &img_s, &img_s);
+	size = TILE_SIZE;
+	game->tileset.apple = \
+		mlx_xpm_file_to_image(game->mlx.mlx_p, "imgs/apple.xpm", &size, &size);
+	game->tileset.exit = \
+		mlx_xpm_file_to_image(game->mlx.mlx_p, "imgs/exit_c.xpm", &size, &size);
+	game->tileset.grass = \
+		mlx_xpm_file_to_image(game->mlx.mlx_p, "imgs/grass.xpm", &size, &size);
+	game->tileset.player = \
+		mlx_xpm_file_to_image(game->mlx.mlx_p, "imgs/player.xpm", &size, &size);
+	game->tileset.wall = \
+		mlx_xpm_file_to_image(game->mlx.mlx_p, "imgs/wall.xpm", &size, &size);
 }
 
 void	set_data(t_game *game)

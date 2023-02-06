@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 11:18:35 by aaugu             #+#    #+#             */
-/*   Updated: 2023/02/06 12:16:11 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/02/06 13:36:02 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_bool	is_all_valid(const char *filename, t_game *game)
 	if (!is_extension_valid(filename))
 		return (0);
 	map = map_parsing(filename);
-	if (!map || !is_map_valid(map))
+	if (!map || !is_map_valid(map, game))
 		return (0);
 	game->map.layout = map;
 	return (1);

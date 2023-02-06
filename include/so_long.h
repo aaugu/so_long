@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 10:13:06 by aaugu             #+#    #+#             */
-/*   Updated: 2023/02/06 12:14:47 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/02/06 13:21:49 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,11 +82,11 @@ int		count_lines(const char *filename);
 char	**ft_freeall(char **strs);
 
 /* ---------------	MAP REQUIREMENTS CHECK	--------------- */
-t_bool	is_map_valid(char **map);
-t_bool	is_rectangular(char **map);
+t_bool	is_map_valid(char **map, t_game *game);
+t_bool	is_rectangular(char **map, t_game *game);
 t_bool	is_closed(char **map);
 t_bool	is_closed_horizontal(char *map);
-t_bool	is_complete(char **map);
+t_bool	is_complete(char **map, t_game *game);
 
 /* ---------------	MAP SOLVABLE CHECK	--------------- */
 t_bool	is_solvable(char **map);

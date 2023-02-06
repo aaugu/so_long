@@ -6,15 +6,15 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 11:49:14 by aaugu             #+#    #+#             */
-/*   Updated: 2023/02/06 09:47:44 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/02/06 13:36:15 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-t_bool	is_map_valid(char **map)
+t_bool	is_map_valid(char **map, t_game *game)
 {
-	if (!is_rectangular(map) || !is_closed(map))
+	if (!is_rectangular(map, game) || !is_closed(map))
 	{
 		ft_printf("Try again with a valid map.\n");
 		return (0);
@@ -22,7 +22,7 @@ t_bool	is_map_valid(char **map)
 	return (1);
 }
 
-t_bool	is_rectangular(char **map)
+t_bool	is_rectangular(char **map, t_game *game)
 {
 	int	x;
 	int	y;
@@ -45,6 +45,8 @@ t_bool	is_rectangular(char **map)
 		ft_printf("Error, map is not rectangular.\n");
 		return (0);
 	}
+	game->map.w = x;
+	game->map.h = y;
 	return (1);
 }
 

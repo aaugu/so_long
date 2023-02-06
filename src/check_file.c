@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 11:18:35 by aaugu             #+#    #+#             */
-/*   Updated: 2023/02/06 14:32:38 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/02/06 14:37:25 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ t_bool	is_all_valid(const char *filename, t_game *game)
 
 t_bool	is_extension_valid(const char *filename)
 {
-	int		i;
 	char	*extension;
 
 	extension = ft_strrchr(filename, '.');

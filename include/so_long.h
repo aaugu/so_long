@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 10:13:06 by aaugu             #+#    #+#             */
-/*   Updated: 2023/02/06 13:21:49 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/02/06 14:04:48 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,9 @@ typedef struct s_tileset
 typedef struct s_data
 {
 	int		moves;
-	int		nb_player;
 	int		nb_apples;
 	int		nb_exit;
+	int		nb_player;
 }				t_data;
 
 typedef struct t_game
@@ -83,7 +83,7 @@ char	**ft_freeall(char **strs);
 
 /* ---------------	MAP REQUIREMENTS CHECK	--------------- */
 t_bool	is_map_valid(char **map, t_game *game);
-t_bool	is_rectangular(char **map, t_game *game);
+t_bool	is_rect(char **map, t_game *game);
 t_bool	is_closed(char **map);
 t_bool	is_closed_horizontal(char *map);
 t_bool	is_complete(char **map, t_game *game);
@@ -98,7 +98,7 @@ void	set_tileset(t_game *game);
 void	set_data(t_game *game);
 
 /* ---------------	GAME DISPLAY	--------------- */
-void	game_display(t_game *game, int x, int y);
+void	game_display(t_game *game);
 void	put_image(t_game *game, void *image, int x, int y);
 
 #endif

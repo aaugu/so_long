@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 11:49:14 by aaugu             #+#    #+#             */
-/*   Updated: 2023/02/06 13:36:15 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/02/06 14:04:38 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_bool	is_map_valid(char **map, t_game *game)
 {
-	if (!is_rectangular(map, game) || !is_closed(map))
+	if (!is_rect(map, game) || !is_closed(map) || !is_complete(map, game))
 	{
 		ft_printf("Try again with a valid map.\n");
 		return (0);
@@ -22,7 +22,7 @@ t_bool	is_map_valid(char **map, t_game *game)
 	return (1);
 }
 
-t_bool	is_rectangular(char **map, t_game *game)
+t_bool	is_rect(char **map, t_game *game)
 {
 	int	x;
 	int	y;
@@ -87,4 +87,33 @@ t_bool	is_closed_horizontal(char *map)
 		x++;
 	}
 	return (1);
+}
+
+t_bool	is_complete(char **map, t_game *game)
+{
+	int	x;
+	int	y;
+
+	x = 0;
+	y = 0;
+	while (map[y])
+	{
+		while (map[y][x])
+		{
+			if (map[y][x] == 'C')
+				game->data.nb_apples++;
+			if (map[y][x] == 'E')
+				game->data.nb_exit++;
+			if (map[y][x] == 'P')
+				game->data.nb_player++;
+			x++;
+		}
+		x = 0;
+		y++;
+	}
+	if (game->data.nb_exit == 1 && game->data.nb_player == 1 \
+		&& game->data.nb_apples >= 1)
+		return (1);
+	ft_printf("Error, map doesn't have all expected elements.\n");
+	return (0);
 }

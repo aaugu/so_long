@@ -6,14 +6,19 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 11:16:36 by aaugu             #+#    #+#             */
-/*   Updated: 2023/02/06 13:26:53 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/02/06 13:59:55 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void	game_display(t_game *game, int x, int y)
+void	game_display(t_game *game)
 {
+	int	x;
+	int	y;
+
+	x = 0;
+	y = 0;
 	while (y < game->map.h)
 	{
 		while (x < game->map.w)

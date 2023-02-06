@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 11:18:35 by aaugu             #+#    #+#             */
-/*   Updated: 2023/02/06 13:36:02 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/02/06 14:32:38 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ t_bool	is_all_valid(const char *filename, t_game *game)
 	if (!is_extension_valid(filename))
 		return (0);
 	map = map_parsing(filename);
+	map_data_init(game);
 	if (!map || !is_map_valid(map, game))
 		return (0);
 	game->map.layout = map;
@@ -39,4 +40,11 @@ t_bool	is_extension_valid(const char *filename)
 	if (ft_strcmp(extension, ".ber") == 0)
 		return (1);
 	return (0);
+}
+
+void	map_data_init(t_game *game)
+{
+	game->data.apple = 0;
+	game->data.exit = 0;
+	game->data.player = 0;
 }

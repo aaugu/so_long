@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 10:13:06 by aaugu             #+#    #+#             */
-/*   Updated: 2023/02/02 14:00:12 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/02/06 11:08:43 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,33 +20,43 @@
 
 typedef int	t_bool;
 
-typedef struct s_window
+typedef struct s_game
+{
+	t_mlx		mlx;
+	t_map		map;
+	t_tileset	tileset;
+	t_data		data;
+}				t_game;
+
+typedef struct s_mlx
 {
 	void	*mlx;
 	void	*win;
-	int		width;
-	int		height;
-	char	**layout;
-}				t_window;
+	int		w;
+	int		h;
+}				t_mlx;
 
 typedef struct s_map
 {
-	int		width;
-	int		height;
+	int		w;
+	int		h;
+	int		player_x;
+	int		player_y;
 	char	**layout;
 }				t_map;
 
 typedef struct s_tileset
 {
 	void	*apple;
-	void	*player;
 	void	*exit;
 	void	*grass;
+	void	*player;
 	void	*wall;
 }				t_tileset;
 
 typedef struct s_data
 {
+	int		moves;
 	int		nb_player;
 	int		nb_apples;
 	int		nb_exit;
@@ -63,19 +73,34 @@ typedef struct s_data
 # define KEY_ESC 53
 
 /* ---------------	FILE CHECKS	--------------- */
+t_bool	is_all_valid(const char *filename);
+
 t_bool	is_extension_valid(const char *filename);
 
 /* ---------------	MAP PARSING	--------------- */
 char	**map_parsing(char *filename);
+
 int		count_lines(char *filename);
 char	**ft_freeall(char **strs);
 
-/* ---------------	MAP CHECKS	--------------- */
+/* ---------------	MAP REQUIREMENTS CHECK	--------------- */
 t_bool	is_map_valid(char **map);
+
 t_bool	is_rectangular(char **map);
 t_bool	is_closed(char **map);
 t_bool	is_closed_horizontal(char *map);
+t_bool	is_complete(char **map);
+
+/* ---------------	MAP SOLVABLE CHECK	--------------- */
 t_bool	is_solvable(char **map);
-t_bool	has_all_elements(char **map);
+
+/* ---------------	GAME INIT	--------------- */
+void	game_init(t_game game);
+
+void	set_mlx(t_game game);
+void	set_tileset(t_game game);
+void	set_data(t_game game);
+void	game_display(t_game game);
+void	put_image(t_game game, void *image, int x, int y);
 
 #endif

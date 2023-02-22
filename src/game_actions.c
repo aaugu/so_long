@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 13:27:50 by aaugu             #+#    #+#             */
-/*   Updated: 2023/02/22 13:57:02 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/02/22 14:07:39 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,8 @@ void	move_cat(t_game *game, int x, int y)
 
 void	collect_apple(t_game *game, int x, int y)
 {
-	game->map.layout[game->map.cat_y + y][game->map.cat_x + x] = '0';
-	game->data.apple--;
 	move_cat(game, x, y);
+	game->data.apple--;
 	ft_printf("Vous avez ramassé une pomme !\n");
 	ft_printf("Il en reste %d à récupérer\n", game->data.apple);
 	if (game->data.apple == 0)
@@ -37,10 +36,10 @@ void	collect_apple(t_game *game, int x, int y)
 void	victory(t_game *game, int x, int y)
 {
 	game->data.moves++;
-	game->map.layout[game->map.cat_y][game->map.cat_x] = '0';
-	game_display(game);
-	put_image(game, game->tileset.cat, game->map.cat_x + x, \
-		game->map.cat_y + y);
+	// game->map.layout[game->map.cat_y][game->map.cat_x] = '0';
+	// game_display(game);
+	// put_image(game, game->tileset.cat, game->map.cat_x + x, \
+	// 	game->map.cat_y + y);
 	ft_printf("%d pas - Bravo!\n", game->data.moves, game->data.apple);
 	endgame(game);
 }

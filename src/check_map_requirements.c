@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 11:49:14 by aaugu             #+#    #+#             */
-/*   Updated: 2023/02/06 14:32:54 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/02/22 11:52:47 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,16 +101,16 @@ t_bool	is_complete(char **map, t_game *game, int x, int y)
 				game->data.exit++;
 			if (map[y][x] == 'P')
 			{
-				game->data.player++;
-				game->map.player_x = x;
-				game->map.player_x = y;
+				game->data.cat++;
+				game->map.cat_x = x;
+				game->map.cat_y = y;
 			}
 			x++;
 		}
 		x = 0;
 		y++;
 	}
-	if (game->data.exit == 1 && game->data.player == 1 && game->data.apple >= 1)
+	if (game->data.exit == 1 && game->data.cat == 1 && game->data.apple >= 1)
 		return (1);
 	ft_printf("Error, map doesn't have all expected elements.\n");
 	return (0);

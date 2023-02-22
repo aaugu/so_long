@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game_key_hook.c                                    :+:      :+:    :+:   */
+/*   key_hook.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/06 15:10:23 by aaugu             #+#    #+#             */
-/*   Updated: 2023/02/06 16:10:44 by aaugu            ###   ########.fr       */
+/*   Created: 2023/02/22 13:36:09 by aaugu             #+#    #+#             */
+/*   Updated: 2023/02/22 13:37:06 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-int	game_key_hook(int keycode, t_game *game)
+int	key_hook(int keycode, t_game *game)
 {
-	if (keycode == KEY_A)
+	if (keycode == KEY_A || keycode == KEY_LEFT)
 		action(game, -1, 0);
-	if (keycode == KEY_S)
+	if (keycode == KEY_S || keycode == KEY_DOWN)
 		action(game, 0, 1);
-	if (keycode == KEY_D)
+	if (keycode == KEY_D || keycode == KEY_RIGHT)
 		action(game, 1, 0);
-	if (keycode == KEY_W)
+	if (keycode == KEY_W || keycode == KEY_UP)
 		action(game, 0, -1);
+	if (keycode == KEY_ESC)
+		endgame(game);
 	return (0);
 }
 
@@ -29,17 +31,13 @@ void	action(t_game *game, int x, int y)
 {
 	char	nxt_tile;
 
-	nxt_tile = game->map.layout[game->map.player_y + y][game->map.player_x + x];
+	nxt_tile = game->map.layout[game->map.cat_y + y][game->map.cat_x + x];
 	if (nxt_tile == '0')
-		ft_printf("Herbe");
-	// 	move_player(game, x, y);
+		move_cat(game, x, y);
 	if (nxt_tile == 'C')
-	{
-		ft_printf("Pomme");
-		// game->map.layout[game->map.player_y + y][game->map.player_x + x] = '0';
-		// game->data.apple--;
-		// move_player(game, x, y);
-	}
-	// if (is_exit(game) && game->data.apple == 0)
-	// 	victory(game);
+		collect_apple(game, x, y);
+	if (nxt_tile == 'E' && game->data.apple != 0)
+		ft_printf("Il reste encore %d pommes à ramasser !\n", game->data.apple);
+	if (nxt_tile == 'E' && game->data.apple == 0)
+		victory(game, x, y);
 }

@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 10:13:06 by aaugu             #+#    #+#             */
-/*   Updated: 2023/02/06 16:10:33 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/02/22 13:35:10 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ typedef struct s_map
 {
 	int		w;
 	int		h;
-	int		player_x;
-	int		player_y;
+	int		cat_x;
+	int		cat_y;
 	char	**layout;
 }				t_map;
 
@@ -42,7 +42,7 @@ typedef struct s_tileset
 	void	*apple;
 	void	*exit;
 	void	*grass;
-	void	*player;
+	void	*cat;
 	void	*wall;
 }				t_tileset;
 
@@ -51,7 +51,7 @@ typedef struct s_data
 	int		moves;
 	int		apple;
 	int		exit;
-	int		player;
+	int		cat;
 }				t_data;
 
 typedef struct t_game
@@ -70,6 +70,10 @@ typedef struct t_game
 # define KEY_S 1
 # define KEY_D 2
 # define KEY_W 13
+# define KEY_LEFT 123
+# define KEY_DOWN 125
+# define KEY_RIGHT 124
+# define KEY_UP 126
 # define KEY_ESC 53
 
 /* ---------------	FILE CHECKS	--------------- */
@@ -102,8 +106,15 @@ void	set_data(t_game *game);
 void	game_display(t_game *game);
 void	put_image(t_game *game, void *image, int x, int y);
 
-/* ---------------	KEY HOOK	--------------- */
-int		game_key_hook(int keycode, t_game *game);
+/* ---------------	HOOKS	--------------- */
+int		key_hook(int keycode, t_game *game);
+int		mouse_hook(int mousecode, t_game *game);
+
+/* ---------------	GAME ACTIONS	--------------- */
 void	action(t_game *game, int x, int y);
+void	move_cat(t_game *game, int x, int y);
+void	collect_apple(t_game *game, int x, int y);
+void	victory(t_game *game, int x, int y);
+void	endgame(t_game *game);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 10:06:30 by aaugu             #+#    #+#             */
-/*   Updated: 2023/02/06 16:11:24 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/02/22 11:54:05 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ void	set_tileset(t_game *game)
 		mlx_xpm_file_to_image(game->mlx.mlx_p, "imgs/exit_c.xpm", &size, &size);
 	game->tileset.grass = \
 		mlx_xpm_file_to_image(game->mlx.mlx_p, "imgs/grass.xpm", &size, &size);
-	game->tileset.player = \
-		mlx_xpm_file_to_image(game->mlx.mlx_p, "imgs/player.xpm", &size, &size);
+	game->tileset.cat = \
+		mlx_xpm_file_to_image(game->mlx.mlx_p, "imgs/cat.xpm", &size, &size);
 	game->tileset.wall = \
 		mlx_xpm_file_to_image(game->mlx.mlx_p, "imgs/wall.xpm", &size, &size);
 }

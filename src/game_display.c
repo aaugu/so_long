@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 11:16:36 by aaugu             #+#    #+#             */
-/*   Updated: 2023/02/06 16:11:41 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/02/22 11:53:26 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	game_display(t_game *game)
 			if (game->map.layout[y][x] == 'E')
 				put_image(game, game->tileset.exit, x, y);
 			if (game->map.layout[y][x] == 'P')
-				put_image(game, game->tileset.player, x, y);
+				put_image(game, game->tileset.cat, x, y);
 			x++;
 		}
 		x = 0;

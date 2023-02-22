@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 11:18:35 by aaugu             #+#    #+#             */
-/*   Updated: 2023/02/06 14:37:25 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/02/22 11:53:03 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,5 @@ void	map_data_init(t_game *game)
 {
 	game->data.apple = 0;
 	game->data.exit = 0;
-	game->data.player = 0;
+	game->data.cat = 0;
 }

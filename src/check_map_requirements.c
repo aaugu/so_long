@@ -6,16 +6,15 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 11:49:14 by aaugu             #+#    #+#             */
-/*   Updated: 2023/02/24 11:55:29 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/02/24 13:59:23 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-t_bool	is_map_valid
+t_bool	is_map_valid(char **map, t_game *game)
 {
-	if (!is_rect(map, game) || !is_closed(map) || !is_complete(map, game, 0, 0)\
-		!is_solvable(map, game))
+	if (!is_rect(map, game) || !is_closed(map) || !is_complete(map, game, 0, 0))
 	{
 		ft_printf("Try again with a valid map.\n");
 		return (0);
@@ -96,13 +95,13 @@ t_bool	is_complete(char **map, t_game *game, int x, int y)
 	{
 		while (map[y][x])
 		{
-			else if (map[y][x] == 'C')
+			if (map[y][x] == 'C')
 				game->nb.apple++;
-			else if (map[y][x] == 'E')
-				game->nb.exit++;
+			if (map[y][x] == 'E')
+				game->map.check.exit++;
 			if (map[y][x] == 'P')
 			{
-				game->nb.cat++;
+				game->map.check.cat++;
 				game->map.cat_x = x;
 				game->map.cat_y = y;
 			}
@@ -111,7 +110,8 @@ t_bool	is_complete(char **map, t_game *game, int x, int y)
 		x = 0;
 		y++;
 	}
-	if (game->nb.exit == 1 && game->nb.cat == 1 && game->nb.apple >= 1)
+	if (game->map.check.exit == 1 && game->map.check.cat == 1 \
+		&& game->nb.apple >= 1)
 		return (1);
 	ft_printf("Error\nMap doesn't have expected elements.\n");
 	return (0);

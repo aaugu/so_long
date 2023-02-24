@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 11:18:35 by aaugu             #+#    #+#             */
-/*   Updated: 2023/02/24 13:55:20 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/02/24 14:21:24 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,6 @@ t_bool	is_extension_valid(const char *filename)
 void	map_data_init(t_game *game)
 {
 	game->nb.apple = 0;
-	game->map.check.exit = 0;
-	game->map.check.cat = 0;
+	game->check.exit = 0;
+	game->check.cat = 0;
 }

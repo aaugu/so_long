@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 10:13:06 by aaugu             #+#    #+#             */
-/*   Updated: 2023/02/24 14:12:16 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/02/24 14:20:33 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,6 @@ typedef struct s_mlx
 	int		h;
 }				t_mlx;
 
-typedef struct s_check
-{
-	int		apple;
-	int		exit;
-	int		cat;
-	char	**map;
-}				t_check;
-
 typedef struct s_map
 {
 	int		w;
@@ -43,7 +35,6 @@ typedef struct s_map
 	int		cat_x;
 	int		cat_y;
 	char	**layout;
-	t_check	check;
 }				t_map;
 
 typedef struct s_tileset
@@ -61,12 +52,21 @@ typedef struct s_nb
 	int		apple;
 }				t_nb;
 
+typedef struct s_check
+{
+	int		apple;
+	int		exit;
+	int		cat;
+	char	**map;
+}				t_check;
+
 typedef struct t_game
 {
 	t_mlx		mlx;
 	t_map		map;
 	t_tileset	tileset;
 	t_nb		nb;
+	t_check		check;
 }				t_game;
 
 /* ---------------	TILES SIZE	--------------- */

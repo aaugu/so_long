@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 11:49:14 by aaugu             #+#    #+#             */
-/*   Updated: 2023/02/24 13:59:23 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/02/24 14:21:14 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,10 +98,10 @@ t_bool	is_complete(char **map, t_game *game, int x, int y)
 			if (map[y][x] == 'C')
 				game->nb.apple++;
 			if (map[y][x] == 'E')
-				game->map.check.exit++;
+				game->check.exit++;
 			if (map[y][x] == 'P')
 			{
-				game->map.check.cat++;
+				game->check.cat++;
 				game->map.cat_x = x;
 				game->map.cat_y = y;
 			}
@@ -110,7 +110,7 @@ t_bool	is_complete(char **map, t_game *game, int x, int y)
 		x = 0;
 		y++;
 	}
-	if (game->map.check.exit == 1 && game->map.check.cat == 1 \
+	if (game->check.exit == 1 && game->check.cat == 1 \
 		&& game->nb.apple >= 1)
 		return (1);
 	ft_printf("Error\nMap doesn't have expected elements.\n");

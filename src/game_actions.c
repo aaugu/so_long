@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 13:27:50 by aaugu             #+#    #+#             */
-/*   Updated: 2023/02/22 14:07:39 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/02/24 10:27:06 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,35 +18,35 @@ void	move_cat(t_game *game, int x, int y)
 	game->map.layout[game->map.cat_y + y][game->map.cat_x + x] = 'P';
 	game->map.cat_x += x;
 	game->map.cat_y += y;
-	game->data.moves++;
+	game->nb.moves++;
 	game_display(game);
-	ft_printf("%d pas\n", game->data.moves);
+	ft_printf("Moves > %d\n", game->nb.moves);
 }
 
 void	collect_apple(t_game *game, int x, int y)
 {
 	move_cat(game, x, y);
-	game->data.apple--;
-	ft_printf("Vous avez ramassé une pomme !\n");
-	ft_printf("Il en reste %d à récupérer\n", game->data.apple);
-	if (game->data.apple == 0)
-		ft_printf("Vous pouvez maintenant les ranger !\n");
+	game->nb.apple--;
+	ft_printf("You pick up an apple !\n");
+	ft_printf("There are %d left to collect\n", game->nb.apple);
+	if (game->nb.apple == 0)
+		ft_printf("Now, you can store them !\n");
 }
 
 void	victory(t_game *game, int x, int y)
 {
-	game->data.moves++;
+	game->nb.moves++;
 	// game->map.layout[game->map.cat_y][game->map.cat_x] = '0';
 	// game_display(game);
 	// put_image(game, game->tileset.cat, game->map.cat_x + x, \
 	// 	game->map.cat_y + y);
-	ft_printf("%d pas - Bravo!\n", game->data.moves, game->data.apple);
+	ft_printf("Moves > %d - Congratulations!\n", game->nb.moves, game->nb.apple);
 	endgame(game);
 }
 
 void	endgame(t_game *game)
 {
 	mlx_destroy_window(game->mlx.mlx_p, game->mlx.win);
-	ft_printf("Merci d'avoir joué à so_long !\n");
+	ft_printf("Thanks for playing so_long !\n");
 	exit(0);
 }

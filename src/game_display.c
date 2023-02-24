@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 11:16:36 by aaugu             #+#    #+#             */
-/*   Updated: 2023/02/22 11:53:26 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/02/24 10:18:38 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,5 @@ void	game_display(t_game *game)
 void	put_image(t_game *game, void *image, int x, int y)
 {
 	mlx_put_image_to_window(game->mlx.mlx_p, game->mlx.win, image, \
-		x * TILE_SIZE, y * TILE_SIZE);
+		x * TILE_W, y * TILE_H);
 }

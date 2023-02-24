@@ -6,15 +6,16 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 11:49:14 by aaugu             #+#    #+#             */
-/*   Updated: 2023/02/22 11:52:47 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/02/24 11:55:29 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-t_bool	is_map_valid(char **map, t_game *game)
+t_bool	is_map_valid
 {
-	if (!is_rect(map, game) || !is_closed(map) || !is_complete(map, game, 0, 0))
+	if (!is_rect(map, game) || !is_closed(map) || !is_complete(map, game, 0, 0)\
+		!is_solvable(map, game))
 	{
 		ft_printf("Try again with a valid map.\n");
 		return (0);
@@ -35,14 +36,14 @@ t_bool	is_rect(char **map, t_game *game)
 		x = ft_strlen(map[y]);
 		if (save_x != x)
 		{
-			ft_printf("Error, map is not rectangular.\n");
+			ft_printf("Error\nMap is not rectangular.\n");
 			return (0);
 		}
 		y++;
 	}
 	if (x == y)
 	{
-		ft_printf("Error, map is not rectangular.\n");
+		ft_printf("Error\nMap is not rectangular.\n");
 		return (0);
 	}
 	game->map.w = x;
@@ -64,7 +65,7 @@ t_bool	is_closed(char **map)
 		}
 		else if (map[y][0] != '1' || map[y][ft_strlen(map[y]) - 1] != '1')
 		{
-			ft_printf("Error, map not closed by wall\n");
+			ft_printf("Error\nMap not closed by wall\n");
 			return (0);
 		}
 		y++;
@@ -81,7 +82,7 @@ t_bool	is_closed_horizontal(char *map)
 	{
 		if (map[x] != '1')
 		{
-			ft_printf("Error, map not closed by wall\n");
+			ft_printf("Error\nMap not closed by wall\n");
 			return (0);
 		}
 		x++;
@@ -95,13 +96,13 @@ t_bool	is_complete(char **map, t_game *game, int x, int y)
 	{
 		while (map[y][x])
 		{
-			if (map[y][x] == 'C')
-				game->data.apple++;
-			if (map[y][x] == 'E')
-				game->data.exit++;
+			else if (map[y][x] == 'C')
+				game->nb.apple++;
+			else if (map[y][x] == 'E')
+				game->nb.exit++;
 			if (map[y][x] == 'P')
 			{
-				game->data.cat++;
+				game->nb.cat++;
 				game->map.cat_x = x;
 				game->map.cat_y = y;
 			}
@@ -110,8 +111,8 @@ t_bool	is_complete(char **map, t_game *game, int x, int y)
 		x = 0;
 		y++;
 	}
-	if (game->data.exit == 1 && game->data.cat == 1 && game->data.apple >= 1)
+	if (game->nb.exit == 1 && game->nb.cat == 1 && game->nb.apple >= 1)
 		return (1);
-	ft_printf("Error, map doesn't have all expected elements.\n");
+	ft_printf("Error\nMap doesn't have expected elements.\n");
 	return (0);
 }

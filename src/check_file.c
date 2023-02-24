@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 11:18:35 by aaugu             #+#    #+#             */
-/*   Updated: 2023/02/22 11:53:03 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/02/24 10:26:18 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_bool	is_extension_valid(const char *filename)
 	extension = ft_strrchr(filename, '.');
 	if (!extension || ft_strlen(extension) > 4)
 	{
-		ft_printf("Error, file extension is not valid. Try again\n");
+		ft_printf("Error\nFile extension is not valid. Try again\n");
 		return (0);
 	}
 	if (ft_strcmp(extension, ".ber") == 0)
@@ -43,7 +43,7 @@ t_bool	is_extension_valid(const char *filename)
 
 void	map_data_init(t_game *game)
 {
-	game->data.apple = 0;
-	game->data.exit = 0;
-	game->data.cat = 0;
+	game->nb.apple = 0;
+	game->nb.exit = 0;
+	game->nb.cat = 0;
 }

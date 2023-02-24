@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 10:24:53 by aaugu             #+#    #+#             */
-/*   Updated: 2023/02/06 13:17:10 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/02/24 10:12:25 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	count_lines(const char *filename)
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
 	{
-		ft_printf("Error, map file is not readable\n");
+		ft_printf("Error\nMap file is not readable\n");
 		return (0);
 	}
 	while (get_next_line(fd))

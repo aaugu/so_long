@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 10:13:06 by aaugu             #+#    #+#             */
-/*   Updated: 2023/02/22 13:35:10 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/02/24 11:51:58 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,14 @@ typedef struct s_mlx
 	int		h;
 }				t_mlx;
 
+typedef struct s_check
+{
+	int		apple;
+	int		exit;
+	int		cat;
+	char	**map;
+}				t_check;
+
 typedef struct s_map
 {
 	int		w;
@@ -35,6 +43,7 @@ typedef struct s_map
 	int		cat_x;
 	int		cat_y;
 	char	**layout;
+	t_check	check;
 }				t_map;
 
 typedef struct s_tileset
@@ -46,35 +55,34 @@ typedef struct s_tileset
 	void	*wall;
 }				t_tileset;
 
-typedef struct s_data
+typedef struct s_nb
 {
 	int		moves;
 	int		apple;
-	int		exit;
-	int		cat;
-}				t_data;
+}				t_nb;
 
 typedef struct t_game
 {
 	t_mlx		mlx;
 	t_map		map;
 	t_tileset	tileset;
-	t_data		data;
+	t_nb		nb;
 }				t_game;
 
 /* ---------------	TILES SIZE	--------------- */
-# define TILE_SIZE	16
+# define TILE_W	16
+# define TILE_H	16
 
 /* ---------------	KEYCODES	--------------- */
-# define KEY_A 0
-# define KEY_S 1
-# define KEY_D 2
-# define KEY_W 13
-# define KEY_LEFT 123
-# define KEY_DOWN 125
-# define KEY_RIGHT 124
-# define KEY_UP 126
-# define KEY_ESC 53
+# define A 0
+# define S 1
+# define D 2
+# define W 13
+# define LEFT 123
+# define DOWN 125
+# define RIGHT 124
+# define UP 126
+# define ESC 53
 
 /* ---------------	FILE CHECKS	--------------- */
 t_bool	is_all_valid(const char *filename, t_game *game);

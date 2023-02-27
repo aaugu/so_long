@@ -6,21 +6,26 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 09:51:49 by aaugu             #+#    #+#             */
-/*   Updated: 2023/02/24 14:25:23 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/02/27 13:12:55 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../include/so_long.h"
+
 t_bool	is_solvable(char **map, t_game *game)
 {
-	copy_char_dptr(game->map.layout, game->check.map);
+	copy_map(map, game);
+	if (!game->check.map)
+		return (0);
 	game->check.apple = game->nb.apple;
-	fill_path(game->check.map, game->map.cat_x, game->map.cat_y);
-	if (game->map.exit != 0 || game->map.apple != 0)
+	fill_path(game->check.map, game->map.cat_x, game->map.cat_y, game);
+	if (game->check.exit != 0 || game->check.apple != 0)
 	{
-		if (game->map.exit != 0)
-			ft_printf("Error\nExit can't be reached");
-		if (game->map.apple != 0)
-			ft_printf("Error\nAll apples can't be reached");
+		ft_printf("Error\n");
+		if (game->check.exit != 0)
+			ft_printf("Exit can't be reached. ");
+		if (game->check.apple != 0)
+			ft_printf("All apples can't be reached. ");
 		ft_freeall(game->check.map);
 		return (0);
 	}
@@ -28,15 +33,32 @@ t_bool	is_solvable(char **map, t_game *game)
 	return (1);
 }
 
-void	copy_dptr_char(char **src, char **copy)
+void	copy_map(char **map, t_game *game)
 {
+	int	i;
+
+	i = 0;
+	game->check.map = (char **)malloc(sizeof(char *) * (game->map.h + 1));
+	if (!game->check.map)
+		return ;
+	game->check.map[game->map.h] = NULL;
+	while (map[i])
+	{
+		game->check.map[i] = ft_strdup(map[i]);
+		if (!game->check.map[i++])
+		{
+			ft_freeall(game->check.map);
+			return ;
+		}
+	}
 }
 
-void	fill_path(char **map, int x, int y)
+void	fill_path(char **map, int x, int y, t_game *game)
 {
-	if (map[y][x] == '1' || map[y][x] == '0')
+	if (map[y][x] == '1')
 		return ;
-	if (map[y][x] == 'C' || map[y][x] == 'E' || map[y][x] == 'P')
+	if (map[y][x] == 'C' || map[y][x] == 'E' || map[y][x] == 'P' || \
+		map[y][x] == '0')
 	{
 		if (map[y][x] == 'C')
 			game->check.apple--;
@@ -44,11 +66,11 @@ void	fill_path(char **map, int x, int y)
 			game->check.exit--;
 		if (map[y][x] == 'P')
 			game->check.cat--;
-		map[y][x] = '0';
-		fill_path(map, x, y--);
-		fill_path(map, x, y++);
-		fill_path(map, x++, y);
-		fill_path(map, x--, y);
+		map[y][x] = 'O';
+		fill_path(map, x + 1, y, game);
+		fill_path(map, x, y + 1, game);	
+		fill_path(map, x, y - 1, game);
+		fill_path(map, x - 1, y, game);
 	}
 	return ;
 }

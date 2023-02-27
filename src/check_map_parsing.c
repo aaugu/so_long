@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 10:24:53 by aaugu             #+#    #+#             */
-/*   Updated: 2023/02/24 10:12:25 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/02/27 13:03:03 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	**map_parsing(const char *filename)
 
 	line_nb = count_lines(filename);
 	if (!line_nb)
-		return (0);
+		return (NULL);
 	map = (char **)malloc(sizeof(char *) * (line_nb + 1));
 	if (!map)
 		return (NULL);
@@ -33,8 +33,9 @@ char	**map_parsing(const char *filename)
 	{
 		line = get_next_line(fd);
 		map[i] = ft_substr(line, 0, ft_strlen(line) - 1);
-		if (!map[i] || map[i++] == 0)
+		if (!map[i])
 			return (ft_freeall(map));
+		i++;
 	}
 	return (map);
 }
@@ -56,18 +57,17 @@ int	count_lines(const char *filename)
 		count++;
 	close(fd);
 	if (count == 0)
-		ft_printf("Error\nMap empty");
+		ft_printf("Error\nMap empty\n");
 	return (count);
 }
 
 char	**ft_freeall(char **strs)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	while (strs[i])
 		free(strs[i++]);
 	free(strs);
-	ft_printf("Error\nMap invalid");
 	return (NULL);
 }

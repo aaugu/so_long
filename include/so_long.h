@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 10:13:06 by aaugu             #+#    #+#             */
-/*   Updated: 2023/02/24 14:20:33 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/02/27 11:17:04 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,9 +102,9 @@ t_bool	is_closed_horizontal(char *map);
 t_bool	is_complete(char **map, t_game *game, int x, int y);
 
 /* ---------------	MAP SOLVABLE CHECK	--------------- */
-t_bool	is_solvable(char **map);
-void	copy_dptr_char(char **src, char **copy);
-void	fill_path(char **map, int x, int y);
+t_bool	is_solvable(char **map, t_game *game);
+void	copy_map(char **map, t_game *game);
+void	fill_path(char **map, int x, int y, t_game *game);
 
 /* ---------------	GAME INIT	--------------- */
 void	game_init(t_game *game);

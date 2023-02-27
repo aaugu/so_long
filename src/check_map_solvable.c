@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 09:51:49 by aaugu             #+#    #+#             */
-/*   Updated: 2023/02/27 14:20:15 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/02/27 15:16:21 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void	copy_map(char **map, t_game *game)
 
 	i = 0;
 	game->check.map = (char **)malloc(sizeof(char *) * (game->map.h + 1));
-	ft_printf("game->check.map > %p\n", game->check.map);
 	if (!game->check.map)
 		return ;
 	game->check.map[game->map.h] = NULL;

@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 11:18:35 by aaugu             #+#    #+#             */
-/*   Updated: 2023/02/27 14:08:04 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/02/27 15:16:12 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ t_bool	is_all_valid(const char *filename, t_game *game)
 		return (0);
 	map_data_init(game);
 	game->map.layout = map_parsing(filename);
-	ft_printf("game->map.layout > %p\n", game->map.layout);
 	if (!game->map.layout || !is_map_valid(game->map.layout, game))
 		return (0);
 	return (1);

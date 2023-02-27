@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 10:13:06 by aaugu             #+#    #+#             */
-/*   Updated: 2023/02/27 15:06:46 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/02/27 15:12:45 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,8 +120,6 @@ void	put_image(t_game *game, void *image, int x, int y);
 
 /* ---------------	HOOKS	--------------- */
 int		key_hook(int keycode, t_game *game);
-int		mouse_hook(int mousecode, t_game *game);
-int		exit_hook(int mousecode, t_game *game);
 
 /* ---------------	GAME ACTIONS	--------------- */
 void	action(t_game *game, int x, int y);

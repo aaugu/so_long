@@ -33,7 +33,7 @@ all:		$(NAME)
 
 $(NAME):	$(MLX) $(LIBFT) $(OBJS)
 			@echo " [ .. ] | Compiling so_long.."
-			$(CC) $(FLAGS) $(INCLUDE) $(LIB) $(OBJS) -o $(NAME)
+			$(CC) $(FLAGS) $(LIB) $(OBJS) -o $(NAME)
 			@echo " [ OK ] | so_long ready!"
 
 $(MLX):

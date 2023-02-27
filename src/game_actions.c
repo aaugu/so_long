@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 13:27:50 by aaugu             #+#    #+#             */
-/*   Updated: 2023/02/24 14:00:11 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/02/27 14:39:36 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,19 +35,18 @@ void	collect_apple(t_game *game, int x, int y)
 
 void	victory(t_game *game, int x, int y)
 {
+	(void) x;
+	(void) y;
 	game->nb.moves++;
-	// game->map.layout[game->map.cat_y][game->map.cat_x] = '0';
-	// game_display(game);
-	// put_image(game, game->tileset.cat, game->map.cat_x + x, \
-	// 	game->map.cat_y + y);
 	ft_printf("Moves > %d - Congratulations!\n", game->nb.moves, game->nb.apple);
 	endgame(game);
 }
 
-void	endgame(t_game *game)
+int	endgame(t_game *game)
 {
 	mlx_destroy_window(game->mlx.mlx_p, game->mlx.win);
 	ft_freeall(game->map.layout);
 	ft_printf("Thanks for playing so_long !\n");
 	exit(0);
+	return (0);
 }

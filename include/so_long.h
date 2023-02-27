@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 10:13:06 by aaugu             #+#    #+#             */
-/*   Updated: 2023/02/27 11:17:04 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/02/27 15:06:46 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ typedef struct t_game
 # define TILE_W	16
 # define TILE_H	16
 
+# define TRUE 1
+
 /* ---------------	KEYCODES	--------------- */
 # define A 0
 # define S 1
@@ -119,12 +121,13 @@ void	put_image(t_game *game, void *image, int x, int y);
 /* ---------------	HOOKS	--------------- */
 int		key_hook(int keycode, t_game *game);
 int		mouse_hook(int mousecode, t_game *game);
+int		exit_hook(int mousecode, t_game *game);
 
 /* ---------------	GAME ACTIONS	--------------- */
 void	action(t_game *game, int x, int y);
 void	move_cat(t_game *game, int x, int y);
 void	collect_apple(t_game *game, int x, int y);
 void	victory(t_game *game, int x, int y);
-void	endgame(t_game *game);
+int		endgame(t_game *game);
 
 #endif

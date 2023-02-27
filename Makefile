@@ -21,11 +21,13 @@ SRCS_FILES = 	so_long.c \
 				game_display.c \
 				game_actions.c \
 				key_hook.c \
-				mouse_hook.c
 
 SRCS = $(addprefix ./src/, $(SRCS_FILES))
 
 OBJS = ${SRCS:%.c=%.o}
+
+%.o : %.c
+	$(CC) $(FLAGS) $(INCLUDE) -c $< -o $@
 
 all:		$(NAME)
 

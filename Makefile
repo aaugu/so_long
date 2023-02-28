@@ -23,9 +23,13 @@ SRCS_FILES = 	so_long.c \
 				game_actions.c \
 				key_hook.c \
 
+BONUS_FILES = 	so_long_bonus.c
+
 SRCS = $(addprefix ./src/, $(SRCS_FILES))
+SRCS_B = $(SRCS) $(addprefix ./bonus/, $(BONUS_FILES))
 
 OBJS = ${SRCS:%.c=%.o}
+OBJS_B = ${SRCS_B:%.c=%.o}
 
 %.o : %.c
 	$(CC) $(FLAGS) $(INCLUDE) -c $< -o $@
@@ -47,11 +51,16 @@ $(LIBFT):
 			@make -s -C libft
 			@echo " [ OK ] | Libft ready!"
 
+bonus:		$(MLX) $(LIBFT) $(OBJS_B)
+			@echo " [ .. ] | Compiling so_long with bonus.."
+			$(CC) $(FLAGS) $(LIB) $(OBJS_B) -o $(NAME)
+			@echo " [ OK ] | so_long with bonus ready!"
+
 clean:		
 			@echo " [ .. ] | Cleaning objects.."
 			@make -s -C libft clean
 			@make -s -C mlx clean
-			@($(RM) $(OBJS))
+			@($(RM) $(OBJS) $(OBJS_B))
 			@echo " [ OK ] | Objects removed!"
 
 fclean: 	clean

@@ -16,6 +16,7 @@ SRCS_FILES = 	so_long.c \
 				check_file.c \
 				check_map_parsing.c \
 				check_map_requirements.c \
+				check_map_requirements_utils.c \
 				check_map_solvable.c \
 				game_init.c \
 				game_display.c \

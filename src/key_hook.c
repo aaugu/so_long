@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 13:36:09 by aaugu             #+#    #+#             */
-/*   Updated: 2023/02/24 10:27:28 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/02/28 14:44:58 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,5 @@ void	action(t_game *game, int x, int y)
 	if (nxt_tile == 'E' && game->nb.apple != 0)
 		ft_printf("There are still %d apples to collect !\n", game->nb.apple);
 	if (nxt_tile == 'E' && game->nb.apple == 0)
-		victory(game, x, y);
+		victory(game);
 }

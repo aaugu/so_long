@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 13:27:50 by aaugu             #+#    #+#             */
-/*   Updated: 2023/02/27 14:39:36 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/02/28 15:40:21 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,11 @@ void	collect_apple(t_game *game, int x, int y)
 	ft_printf("You pick up an apple !\n");
 	ft_printf("There are %d left to collect\n", game->nb.apple);
 	if (game->nb.apple == 0)
-		ft_printf("Now, you can store them !\n");
+		ft_printf("Now, you're free to go !\n");
 }
 
-void	victory(t_game *game, int x, int y)
+void	victory(t_game *game)
 {
-	(void) x;
-	(void) y;
 	game->nb.moves++;
 	ft_printf("Moves > %d - Congratulations!\n", game->nb.moves, game->nb.apple);
 	endgame(game);
@@ -45,8 +43,7 @@ void	victory(t_game *game, int x, int y)
 int	endgame(t_game *game)
 {
 	mlx_destroy_window(game->mlx.mlx_p, game->mlx.win);
-	ft_freeall(game->map.layout);
+	free_dptr(game->map.layout);
 	ft_printf("Thanks for playing so_long !\n");
 	exit(0);
-	return (0);
 }

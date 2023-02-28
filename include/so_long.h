@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 10:13:06 by aaugu             #+#    #+#             */
-/*   Updated: 2023/02/27 15:12:45 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/02/28 15:15:02 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,14 +94,17 @@ void	map_data_init(t_game *game);
 /* ---------------	MAP PARSING	--------------- */
 char	**map_parsing(const char *filename);
 int		count_lines(const char *filename);
-char	**ft_freeall(char **strs);
+char	**fill_map(const char *filename, int line_nb);
+void	free_dptr(char **strs);
 
 /* ---------------	MAP REQUIREMENTS CHECK	--------------- */
 t_bool	is_map_valid(char **map, t_game *game);
 t_bool	is_rect(char **map, t_game *game);
-t_bool	is_closed(char **map);
+t_bool	is_closed(char **map, t_game *game);
 t_bool	is_closed_horizontal(char *map);
-t_bool	is_complete(char **map, t_game *game, int x, int y);
+t_bool	is_complete(char **map, t_game *game);
+t_bool	are_elements_valid(char **map, t_game *game);
+void	set_player_data(t_game *game, int x, int y);
 
 /* ---------------	MAP SOLVABLE CHECK	--------------- */
 t_bool	is_solvable(char **map, t_game *game);
@@ -125,7 +128,7 @@ int		key_hook(int keycode, t_game *game);
 void	action(t_game *game, int x, int y);
 void	move_cat(t_game *game, int x, int y);
 void	collect_apple(t_game *game, int x, int y);
-void	victory(t_game *game, int x, int y);
+void	victory(t_game *game);
 int		endgame(t_game *game);
 
 #endif

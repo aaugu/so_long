@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 10:24:53 by aaugu             #+#    #+#             */
-/*   Updated: 2023/02/27 15:16:16 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/02/28 15:50:14 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,30 +15,14 @@
 char	**map_parsing(const char *filename)
 {
 	char	**map;
-	char	*line;
 	int		line_nb;
-	int		fd;
-	int		i;
 
 	line_nb = count_lines(filename);
 	if (!line_nb)
 		return (NULL);
-	map = (char **)malloc(sizeof(char *) * (line_nb + 1));
+	map = fill_map(filename, line_nb);
 	if (!map)
 		return (NULL);
-	map[line_nb] = NULL;
-	fd = open(filename, O_RDONLY);
-	i = 0;
-	while (i < line_nb)
-	{
-		line = get_next_line(fd);
-		map[i] = ft_substr(line, 0, ft_strlen(line) - 1);
-		free(line);
-		if (!map[i])
-			return (ft_freeall(map));
-		i++;
-	}
-	close(fd);
 	return (map);
 }
 
@@ -70,7 +54,36 @@ int	count_lines(const char *filename)
 	return (count);
 }
 
-char	**ft_freeall(char **strs)
+char	**fill_map(const char *filename, int line_nb)
+{
+	int		i;
+	int		fd;
+	char	*line;
+	char	**map;
+
+	map = (char **)malloc(sizeof(char *) * (line_nb + 1));
+	if (!map)
+		return (NULL);
+	map[line_nb] = NULL;
+	fd = open(filename, O_RDONLY);
+	i = 0;
+	while (i < line_nb)
+	{
+		line = get_next_line(fd);
+		map[i] = ft_substr(line, 0, ft_strlen(line) - 1);
+		free(line);
+		if (!map[i])
+		{
+			free_dptr(map);
+			return (NULL);
+		}
+		i++;
+	}
+	close(fd);
+	return (map);
+}
+
+void	free_dptr(char **strs)
 {
 	int	i;
 
@@ -78,5 +91,4 @@ char	**ft_freeall(char **strs)
 	while (strs[i])
 		free(strs[i++]);
 	free(strs);
-	return (NULL);
 }

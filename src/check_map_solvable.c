@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 09:51:49 by aaugu             #+#    #+#             */
-/*   Updated: 2023/02/27 15:16:21 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/02/28 15:14:04 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ t_bool	is_solvable(char **map, t_game *game)
 		return (0);
 	game->check.apple = game->nb.apple;
 	fill_path(game->check.map, game->map.cat_x, game->map.cat_y, game);
+	free_dptr(game->check.map);
 	if (game->check.exit != 0 || game->check.apple != 0)
 	{
 		ft_printf("Error\n");
@@ -26,10 +27,8 @@ t_bool	is_solvable(char **map, t_game *game)
 			ft_printf("Exit can't be reached. ");
 		if (game->check.apple != 0)
 			ft_printf("All apples can't be reached. ");
-		ft_freeall(game->check.map);
 		return (0);
 	}
-	ft_freeall(game->check.map);
 	return (1);
 }
 
@@ -47,7 +46,7 @@ void	copy_map(char **map, t_game *game)
 		game->check.map[i] = ft_strdup(map[i]);
 		if (!game->check.map[i++])
 		{
-			ft_freeall(game->check.map);
+			free_dptr(game->check.map);
 			return ;
 		}
 	}
@@ -55,8 +54,6 @@ void	copy_map(char **map, t_game *game)
 
 void	fill_path(char **map, int x, int y, t_game *game)
 {
-	if (map[y][x] == '1')
-		return ;
 	if (map[y][x] == 'C' || map[y][x] == 'E' || map[y][x] == 'P' || \
 		map[y][x] == '0')
 	{

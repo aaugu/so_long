@@ -13,7 +13,7 @@ LIBFT = libft/libft.a
 RM = rm -f
 
 SRCS_FILES = 	so_long.c \
-				check_file.c \
+				check_map_file.c \
 				check_map_parsing.c \
 				check_map_requirements.c \
 				check_map_requirements_utils.c \

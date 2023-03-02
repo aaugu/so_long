@@ -6,13 +6,13 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 09:51:49 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/02 10:38:13 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/02 09:47:59 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../include/so_long_bonus.h"
 
-t_bool	is_solvable_bonus(char **map, t_game *game)
+t_bool	is_solvable(char **map, t_game *game)
 {
 	copy_map(map, game);
 	if (!game->check.map)

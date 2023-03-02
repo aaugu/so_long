@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 09:51:49 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/02 09:47:59 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/02 10:50:01 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,8 @@ t_bool	is_solvable(char **map, t_game *game)
 	game->check.apple = game->nb.apple;
 	fill_path(game->check.map, game->map.cat_x, game->map.cat_y, game);
 	free_dptr(game->check.map);
-	if (game->check.exit != 0 || game->check.apple != 0)
-	{
-		ft_printf("Error\n");
-		if (game->check.exit != 0)
-			ft_printf("Exit can't be reached. ");
-		if (game->check.apple != 0)
-			ft_printf("All apples can't be reached. ");
+	if (!has_all_elements_bonus(game))
 		return (0);
-	}
 	return (1);
 }
 
@@ -52,7 +45,7 @@ void	copy_map(char **map, t_game *game)
 	}
 }
 
-void	fill_path(char **map, int x, int y, t_game *game)
+void	fill_path_bonus(char **map, int x, int y, t_game *game)
 {
 	if (map[y][x] == 'C' || map[y][x] == 'E' || map[y][x] == 'P' || \
 		map[y][x] == '0')
@@ -63,6 +56,11 @@ void	fill_path(char **map, int x, int y, t_game *game)
 			game->check.exit--;
 		if (map[y][x] == 'P')
 			game->check.cat--;
+		if (map[y][x] == 'S')
+		{
+			game->check.slime--;
+			return ;
+		}
 		map[y][x] = 'O';
 		fill_path(map, x + 1, y, game);
 		fill_path(map, x, y + 1, game);	
@@ -70,4 +68,24 @@ void	fill_path(char **map, int x, int y, t_game *game)
 		fill_path(map, x - 1, y, game);
 	}
 	return ;
+}
+
+t_bool	has_all_elements(t_game *game)
+{
+	if (game->check.exit != 0)
+	{
+		ft_printf("Error\nExit can't be reached. ");
+		return (0);
+	}
+	if (game->check.apple != 0)
+	{
+		ft_printf("Error\nAll apples can't be reached. ");
+		return (0);
+	}
+	if (game->check.slime != 0)
+	{
+		ft_printf("Error\nSlime is not part of the game. ");
+		return (0);
+	}
+	return (1);
 }

@@ -6,50 +6,23 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 09:51:49 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/02 10:38:13 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/02 11:18:30 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-t_bool	is_solvable_bonus(char **map, t_game *game)
+t_bool	is_solvable(char **map, t_game *game)
 {
-	copy_map(map, game);
+	game->check.map = ft_copy_dptr((const char**)map, game->map.h);
 	if (!game->check.map)
 		return (0);
 	game->check.apple = game->nb.apple;
 	fill_path(game->check.map, game->map.cat_x, game->map.cat_y, game);
-	free_dptr(game->check.map);
-	if (game->check.exit != 0 || game->check.apple != 0)
-	{
-		ft_printf("Error\n");
-		if (game->check.exit != 0)
-			ft_printf("Exit can't be reached. ");
-		if (game->check.apple != 0)
-			ft_printf("All apples can't be reached. ");
+	ft_free_dptr(game->check.map, game->map.h);
+	if (!has_all_elements(game))
 		return (0);
-	}
 	return (1);
-}
-
-void	copy_map(char **map, t_game *game)
-{
-	int	i;
-
-	i = 0;
-	game->check.map = (char **)malloc(sizeof(char *) * (game->map.h + 1));
-	if (!game->check.map)
-		return ;
-	game->check.map[game->map.h] = NULL;
-	while (map[i])
-	{
-		game->check.map[i] = ft_strdup(map[i]);
-		if (!game->check.map[i++])
-		{
-			free_dptr(game->check.map);
-			return ;
-		}
-	}
 }
 
 void	fill_path(char **map, int x, int y, t_game *game)
@@ -70,4 +43,19 @@ void	fill_path(char **map, int x, int y, t_game *game)
 		fill_path(map, x - 1, y, game);
 	}
 	return ;
+}
+
+t_bool	has_all_elements(t_game *game)
+{
+	if (game->check.exit != 0)
+	{
+		ft_printf("Error\nExit can't be reached. ");
+		return (0);
+	}
+	if (game->check.apple != 0)
+	{
+		ft_printf("Error\nAll apples can't be reached. ");
+		return (0);
+	}
+	return (1);
 }

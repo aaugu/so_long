@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 12:03:34 by aaugu             #+#    #+#             */
-/*   Updated: 2023/02/02 10:35:16 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/02 11:15:37 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ char	*ft_strtrim(char const *s1, char const *set);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	**ft_split(char const *s, char c);
+char	**ft_copy_dptr(const char **src, int size);
+void	ft_free_dptr(char **strs, int size);
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 
 /* ---------------	MEMORY	--------------- */

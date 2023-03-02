@@ -6,12 +6,11 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 10:24:53 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/02 10:08:20 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/02 11:12:31 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
-#include "../include/so_long_bonus.h"
 
 char	**map_parsing(const char *filename)
 {
@@ -75,21 +74,11 @@ char	**fill_map(const char *filename, int line_nb)
 		free(line);
 		if (!map[i])
 		{
-			free_dptr(map);
+			ft_free_dptr(map, line_nb);
 			return (NULL);
 		}
 		i++;
 	}
 	close(fd);
 	return (map);
-}
-
-void	free_dptr(char **strs)
-{
-	int	i;
-
-	i = 0;
-	while (strs[i])
-		free(strs[i++]);
-	free(strs);
 }

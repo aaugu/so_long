@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 13:27:50 by aaugu             #+#    #+#             */
-/*   Updated: 2023/02/28 15:40:21 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/02 11:21:10 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	victory(t_game *game)
 int	endgame(t_game *game)
 {
 	mlx_destroy_window(game->mlx.mlx_p, game->mlx.win);
-	free_dptr(game->map.layout);
+	ft_free_dptr(game->map.layout, game->map.h);
 	ft_printf("Thanks for playing so_long !\n");
 	exit(0);
 }

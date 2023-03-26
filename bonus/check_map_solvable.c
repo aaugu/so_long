@@ -6,86 +6,69 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 09:51:49 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/02 10:50:01 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/26 17:15:03 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long_bonus.h"
+#include "../include/so_long.h"
+
+void	fill_path(char **map, int x, int y, t_check *check);
+t_bool	all_elements_reacheable(t_check *check);
 
 t_bool	is_solvable(char **map, t_game *game)
 {
-	copy_map(map, game);
+	game->check.map = ft_copy_dptr((const char **)map, game->map.h);
 	if (!game->check.map)
 		return (0);
 	game->check.apple = game->nb.apple;
-	fill_path(game->check.map, game->map.cat_x, game->map.cat_y, game);
-	free_dptr(game->check.map);
-	if (!has_all_elements_bonus(game))
+	fill_path(game->check.map, game->map.cat_x, game->map.cat_y, &game->check);
+	ft_free_dptr(game->check.map, game->map.h);
+	if (all_elements_reacheable(&game->check) == FALSE)
 		return (0);
 	return (1);
 }
 
-void	copy_map(char **map, t_game *game)
-{
-	int	i;
-
-	i = 0;
-	game->check.map = (char **)malloc(sizeof(char *) * (game->map.h + 1));
-	if (!game->check.map)
-		return ;
-	game->check.map[game->map.h] = NULL;
-	while (map[i])
-	{
-		game->check.map[i] = ft_strdup(map[i]);
-		if (!game->check.map[i++])
-		{
-			free_dptr(game->check.map);
-			return ;
-		}
-	}
-}
-
-void	fill_path_bonus(char **map, int x, int y, t_game *game)
+void	fill_path(char **map, int x, int y, t_check *check)
 {
 	if (map[y][x] == 'C' || map[y][x] == 'E' || map[y][x] == 'P' || \
 		map[y][x] == '0')
 	{
 		if (map[y][x] == 'C')
-			game->check.apple--;
+			check->apple--;
 		if (map[y][x] == 'E')
-			game->check.exit--;
+			check->exit--;
 		if (map[y][x] == 'P')
-			game->check.cat--;
+			check->cat--;
 		if (map[y][x] == 'S')
-		{
-			game->check.slime--;
-			return ;
-		}
+			check->slime--;
 		map[y][x] = 'O';
-		fill_path(map, x + 1, y, game);
-		fill_path(map, x, y + 1, game);	
-		fill_path(map, x, y - 1, game);
-		fill_path(map, x - 1, y, game);
+		fill_path(map, x + 1, y, check);
+		fill_path(map, x, y + 1, check);
+		fill_path(map, x, y - 1, check);
+		fill_path(map, x - 1, y, check);
 	}
 	return ;
 }
 
-t_bool	has_all_elements(t_game *game)
+t_bool	all_elements_reacheable(t_check *check)
 {
-	if (game->check.exit != 0)
+	if (check->exit != 0)
 	{
 		ft_printf("Error\nExit can't be reached. ");
 		return (0);
 	}
-	if (game->check.apple != 0)
+	if (check->apple != 0)
 	{
 		ft_printf("Error\nAll apples can't be reached. ");
 		return (0);
 	}
-	if (game->check.slime != 0)
+	if (BONUS)
 	{
-		ft_printf("Error\nSlime is not part of the game. ");
-		return (0);
+		if (check->slime != 0)
+		{
+			ft_printf("Error\nEnemy can't be encountered. ");
+			return (0);
+		}
 	}
 	return (1);
 }

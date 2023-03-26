@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 15:01:51 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/26 15:40:20 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/26 18:19:56 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 typedef struct s_mlx
 {
-	void	*mlx_p;
+	void	*mlx;
 	void	*win;
 	int		w;
 	int		h;
@@ -33,34 +33,11 @@ typedef struct s_map
 	char	**layout;
 }				t_map;
 
-typedef struct s_tileset
-{
-	void	*apple;
-	void	*cat;
-	void	*cat_b;
-	void	*cat_l;
-	void	*cat_r;
-	void	*exit;
-	void	*exit_o;
-	void	*grass;
-	void	*slime;
-	void	*wall;
-}				t_tileset;
-
 typedef struct s_nb
 {
 	int		apple;
 	int		moves;
 }				t_nb;
-
-typedef struct s_check
-{
-	int		apple;
-	int		cat;
-	int		exit;
-	int		slime;
-	char	**map;
-}				t_check;
 
 typedef struct s_game
 {

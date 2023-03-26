@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 11:49:14 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/26 15:30:40 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/26 17:15:46 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,8 @@ t_bool	is_closed(char **map, t_game *game);
 t_bool	is_closed_horizontal(char *map);
 t_bool	is_complete(char **map, t_game *game);
 
-
 t_bool	is_map_valid(char **map, t_game *game)
 {
-	if (!map)
-		return (0);
 	if (!is_rect(map, game))
 	{
 		ft_printf("Error\nMap is not rectangular. ");
@@ -32,7 +29,7 @@ t_bool	is_map_valid(char **map, t_game *game)
 		ft_printf("Error\nMap not closed by wall. ");
 		return (0);
 	}
-	if (!is_complete(map, game))
+	if (!is_complete_and_valid(map, game))
 		return (0);
 	if (!is_solvable(map, game))
 		return (0);
@@ -90,31 +87,6 @@ t_bool	is_closed_horizontal(char *map)
 		if (map[x] != '1')
 			return (0);
 		x++;
-	}
-	return (1);
-}
-
-t_bool	is_complete(char **map, t_game *game)
-{
-	if (!are_elements_valid(map, game))
-	{
-		ft_printf("Error\nUnexpected element in map. ");
-		return (0);
-	}
-	if (game->check.exit != 1)
-	{
-		ft_printf("Error\nExit is missing. ");
-		return (0);
-	}
-	if (game->check.cat != 1)
-	{
-		ft_printf("Error\nPlayer is missing. ");
-		return (0);
-	}
-	if (game->nb.apple < 1)
-	{
-		ft_printf("Error\nNo collectible. ");
-		return (0);
 	}
 	return (1);
 }

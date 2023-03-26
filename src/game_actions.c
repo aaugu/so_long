@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 13:27:50 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/02 11:21:10 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/26 18:11:18 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	move_cat(t_game *game, int x, int y)
 	game->map.cat_x += x;
 	game->map.cat_y += y;
 	game->nb.moves++;
-	game_display(game);
+	game_display(game->mlx, game->map, game->tileset);
 	ft_printf("Moves > %d\n", game->nb.moves);
 }
 
@@ -38,12 +38,4 @@ void	victory(t_game *game)
 	game->nb.moves++;
 	ft_printf("Moves > %d - Congratulations!\n", game->nb.moves, game->nb.apple);
 	endgame(game);
-}
-
-int	endgame(t_game *game)
-{
-	mlx_destroy_window(game->mlx.mlx_p, game->mlx.win);
-	ft_free_dptr(game->map.layout, game->map.h);
-	ft_printf("Thanks for playing so_long !\n");
-	exit(0);
 }

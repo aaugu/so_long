@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 10:13:06 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/26 15:37:29 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/26 18:20:27 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,36 +17,36 @@
 # include "../mlx/mlx.h"
 # include "./game.h"
 
-/* ---------------	FILE CHECKS	--------------- */
+typedef struct s_tileset
+{
+	void	*apple;
+	void	*cat;
+	void	*exit;
+	void	*grass;
+	void	*wall;
+}				t_tileset;
+typedef struct s_check
+{
+	int		apple;
+	int		cat;
+	int		exit;
+	char	**map;
+}				t_check;
+
+/* ---------------	FILE AND MAP REQUIREMENTS CHECK	--------------- */
 t_bool	is_all_valid(const char *filename, t_game *game);
-t_bool	is_extension_valid(const char *filename);
-void	map_data_init(t_game *game);
-
-/* ---------------	MAP PARSING	--------------- */
 char	**map_parsing(const char *filename);
-int		count_lines(const char *filename);
-char	**fill_map(const char *filename, int line_nb);
-
-/* ---------------	MAP REQUIREMENTS CHECK	--------------- */
 t_bool	is_map_valid(char **map, t_game *game);
-t_bool	is_complete(char **map, t_game *game);
-t_bool	are_elements_valid(char **map, t_game *game);
-void	set_player_data(t_game *game, int x, int y);
+t_bool	is_complete_and_valid(char **map, t_game *game);
 
 /* ---------------	MAP SOLVABLE CHECK	--------------- */
 t_bool	is_solvable(char **map, t_game *game);
-void	fill_path(char **map, int x, int y, t_game *game);
-t_bool	has_all_elements(t_game *game);
 
 /* ---------------	GAME INIT	--------------- */
 void	game_init(t_game *game);
-void	set_mlx(t_game *game);
-void	set_tileset(t_game *game);
-void	set_data(t_game *game);
 
 /* ---------------	GAME DISPLAY	--------------- */
-void	game_display(t_game *game);
-void	put_image(t_game *game, void *image, int x, int y);
+void	game_display(t_mlx mlx, t_map map, t_tileset tileset);
 
 /* ---------------	HOOKS	--------------- */
 int		key_hook(int keycode, t_game *game);
@@ -57,5 +57,7 @@ void	move_cat(t_game *game, int x, int y);
 void	collect_apple(t_game *game, int x, int y);
 void	victory(t_game *game);
 int		endgame(t_game *game);
+
+void	error_exit(t_game *game, char *message);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 09:51:49 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/26 17:15:03 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/26 18:32:13 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,6 @@ void	fill_path(char **map, int x, int y, t_check *check)
 			check->exit--;
 		if (map[y][x] == 'P')
 			check->cat--;
-		if (map[y][x] == 'S')
-			check->slime--;
 		map[y][x] = 'O';
 		fill_path(map, x + 1, y, check);
 		fill_path(map, x, y + 1, check);
@@ -61,14 +59,6 @@ t_bool	all_elements_reacheable(t_check *check)
 	{
 		ft_printf("Error\nAll apples can't be reached. ");
 		return (0);
-	}
-	if (BONUS)
-	{
-		if (check->slime != 0)
-		{
-			ft_printf("Error\nEnemy can't be encountered. ");
-			return (0);
-		}
 	}
 	return (1);
 }

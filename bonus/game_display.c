@@ -6,11 +6,11 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 11:16:36 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/26 17:36:26 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/26 18:44:50 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../include/so_long_bonus.h"
 
 void	put_image(t_mlx mlx, void *image, int x, int y);
 

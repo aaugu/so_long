@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 16:05:48 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/26 16:25:08 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/26 18:30:59 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,4 @@ void	map_data_init(t_game *game)
 	game->check.apple = 0;
 	game->check.exit = 0;
 	game->check.cat = 0;
-	if (BONUS)
-		game->check.slime = 0;
 }

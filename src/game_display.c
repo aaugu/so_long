@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 11:16:36 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/26 17:36:26 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/26 18:34:00 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@ void	game_display(t_mlx mlx, t_map map, t_tileset tileset)
 				put_image(mlx, tileset.exit, x, y);
 			if (map.layout[y][x] == 'P')
 				put_image(mlx, tileset.cat, x, y);
-			if (map.layout[y][x] == 'S')
-				put_image(mlx, tileset.slime, x, y);
 			x++;
 		}
 		x = 0;

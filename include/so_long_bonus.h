@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 10:08:09 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/26 18:20:07 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/26 18:35:55 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,24 @@ char	**map_parsing(const char *filename);
 t_bool	is_map_valid(char **map, t_game *game);
 t_bool	is_complete_and_valid(char **map, t_game *game);
 
+/* ---------------	MAP SOLVABLE CHECK	--------------- */
+t_bool	is_solvable(char **map, t_game *game);
+
 /* ---------------	GAME INIT	--------------- */
 void	game_init(t_game *game);
+
+/* ---------------	GAME DISPLAY	--------------- */
+void	game_display(t_mlx mlx, t_map map, t_tileset tileset);
+
+/* ---------------	HOOKS	--------------- */
+int		key_hook(int keycode, t_game *game);
+
+/* ---------------	GAME ACTIONS	--------------- */
+void	action(t_game *game, int x, int y);
+void	move_cat(t_game *game, int x, int y);
+void	collect_apple(t_game *game, int x, int y);
+void	victory(t_game *game);
+int		endgame(t_game *game);
 
 void	error_exit(t_game *game, char *message);
 

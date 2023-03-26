@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:09:59 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/26 18:18:11 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/26 18:41:19 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	main(int argc, char **argv)
 		ft_printf("Error\nWrong number of arguments.\n");
 		return (0);
 	}
+	game.map.layout = NULL;
 	if (!is_all_valid(argv[1], &game))
 		return (0);
 	game_init(&game);

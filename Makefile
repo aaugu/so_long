@@ -24,7 +24,6 @@ SRCS_FILES = 	./src/so_long.c \
 				./src/game_init.c \
 				./src/game_display.c \
 				./src/game_actions.c \
-				./src/key_hook.c \
 
 OBJS = ${SRCS:%.c=%.o}
 

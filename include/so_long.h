@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 10:13:06 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/26 18:20:27 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/26 18:39:13 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,8 @@ void	game_display(t_mlx mlx, t_map map, t_tileset tileset);
 /* ---------------	HOOKS	--------------- */
 int		key_hook(int keycode, t_game *game);
 
-/* ---------------	GAME ACTIONS	--------------- */
-void	action(t_game *game, int x, int y);
-void	move_cat(t_game *game, int x, int y);
-void	collect_apple(t_game *game, int x, int y);
-void	victory(t_game *game);
-int		endgame(t_game *game);
-
+/* ---------------	ERRORS AND ENDGAME	--------------- */
 void	error_exit(t_game *game, char *message);
+int		endgame(t_game *game);
 
 #endif

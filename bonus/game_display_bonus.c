@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game_display.c                                     :+:      :+:    :+:   */
+/*   game_display_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/06 11:16:36 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/26 18:44:50 by aaugu            ###   ########.fr       */
+/*   Created: 2023/03/26 19:26:38 by aaugu             #+#    #+#             */
+/*   Updated: 2023/03/27 00:26:59 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long_bonus.h"
 
-void	put_image(t_mlx mlx, void *image, int x, int y);
-
-void	game_display(t_mlx mlx, t_map map, t_tileset tileset)
+void	game_display_bonus(t_mlx mlx, t_map map, t_tileset tileset)
 {
 	int	x;
 	int	y;
@@ -41,9 +39,5 @@ void	game_display(t_mlx mlx, t_map map, t_tileset tileset)
 		x = 0;
 		y++;
 	}
-}
-
-void	put_image(t_mlx mlx, void *image, int x, int y)
-{
-	mlx_put_image_to_window(mlx.mlx, mlx.win, image, x * TILE_W, y * TILE_H);
+	mlx_string_put(mlx.mlx, mlx.win, TILE_W, mlx.h, 0, "Moves : ");
 }

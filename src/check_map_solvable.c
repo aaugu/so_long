@@ -6,14 +6,13 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 09:51:49 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/26 18:32:13 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/27 00:41:02 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
 void	fill_path(char **map, int x, int y, t_check *check);
-t_bool	all_elements_reacheable(t_check *check);
 
 t_bool	is_solvable(char **map, t_game *game)
 {

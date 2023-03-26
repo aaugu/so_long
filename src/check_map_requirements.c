@@ -6,16 +6,11 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 11:49:14 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/26 17:15:46 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/27 00:40:46 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
-
-t_bool	is_rect(char **map, t_game *game);
-t_bool	is_closed(char **map, t_game *game);
-t_bool	is_closed_horizontal(char *map);
-t_bool	is_complete(char **map, t_game *game);
 
 t_bool	is_map_valid(char **map, t_game *game)
 {

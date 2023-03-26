@@ -6,15 +6,11 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 10:06:30 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/26 18:34:23 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/27 00:41:30 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
-
-void	set_mlx(t_mlx *mlx, t_map map);
-void	set_tileset(t_tileset *tileset, void *mlx);
-void	set_data(t_nb *nb);
 
 void	game_init(t_game *game)
 {

@@ -15,22 +15,27 @@ LIBFT = libft/libft.a
 
 RM = rm -f
 
-SRCS_FILES = 	./src/so_long.c \
-				./src/check_map_file.c \
-				./src/check_map_parsing.c \
-				./src/check_map_requirements.c \
-				./src/check_map_complete.c \
-				./src/check_map_solvable.c \
-				./src/game_init.c \
-				./src/game_display.c \
-				./src/game_actions.c \
+SRCS =	./src/so_long.c \
+		./src/check_map_file.c \
+		./src/check_map_parsing.c \
+		./src/check_map_requirements.c \
+		./src/check_map_complete.c \
+		./src/check_map_solvable.c \
+		./src/game_init.c \
+		./src/game_display.c \
+		./src/game_actions.c \
 
 OBJS = ${SRCS:%.c=%.o}
 
-BONUS_FILES = 	./
+BONUS =	./bonus/so_long_bonus.c \
+		./src/check_map_parsing.c \
+		./bonus/check_map_parsing.c \
+		./src/check_map_complete.c \
+		./bonus/check_map_complete.c \
+		./src/check_map_solvable.c \
+		./bonus/check_map_solvable.c \
 
-OBJS_B = ${SRCS_B:%.c=%.o}
-
+OBJS_B = ${BONUS:%.c=%.o}
 
 %.o : %.c
 	ifdef ($(MAKECMDGOALS), bonus)

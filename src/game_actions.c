@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 13:27:50 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/26 18:38:05 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/27 00:41:11 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 
 void	action(t_game *game, int x, int y);
 void	move_cat(t_game *game, int x, int y);
-void	collect_apple(t_game *game, int x, int y);
-void	victory(t_game *game);
 
-int key_hook(int keycode, t_game *game)
+int	key_hook(int keycode, t_game *game)
 {
 	if (keycode == A || keycode == LEFT)
 		action(game, -1, 0);
@@ -32,19 +30,20 @@ int key_hook(int keycode, t_game *game)
 	return (0);
 }
 
-void action(t_game *game, int x, int y)
+void	action(t_game *game, int x, int y)
 {
-	char nxt_tile;
+	char	nxt_tile;
 
 	nxt_tile = game->map.layout[game->map.cat_y + y][game->map.cat_x + x];
 	if (nxt_tile == '0')
 		move_cat(game, x, y);
-	if (nxt_tile == 'C')
+	else if (nxt_tile == 'C')
 		collect_apple(game, x, y);
-	if (nxt_tile == 'E' && game->nb.apple != 0)
+	else if (nxt_tile == 'E' && game->nb.apple != 0)
 		ft_printf("There are still %d apples to collect !\n", game->nb.apple);
-	if (nxt_tile == 'E' && game->nb.apple == 0)
+	else if (nxt_tile == 'E' && game->nb.apple == 0)
 		victory(game);
+	game_display(game->mlx, game->map, game->tileset);
 }
 
 void	move_cat(t_game *game, int x, int y)
@@ -54,7 +53,6 @@ void	move_cat(t_game *game, int x, int y)
 	game->map.cat_x += x;
 	game->map.cat_y += y;
 	game->nb.moves++;
-	game_display(game->mlx, game->map, game->tileset);
 	ft_printf("Moves > %d\n", game->nb.moves);
 }
 
@@ -65,7 +63,10 @@ void	collect_apple(t_game *game, int x, int y)
 	ft_printf("You pick up an apple !\n");
 	ft_printf("There are %d left to collect\n", game->nb.apple);
 	if (game->nb.apple == 0)
-		ft_printf("Now, you're free to go !\n");
+	{
+		ft_printf("You're ready to prepare a nice apple pie. ");
+		ft_printf("Go put your loot in the chest to bring them safe home\n");
+	}
 }
 
 void	victory(t_game *game)

@@ -1,34 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_map_solvable.c                               :+:      :+:    :+:   */
+/*   check_map_solvable_bonus.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/24 09:51:49 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/26 17:15:03 by aaugu            ###   ########.fr       */
+/*   Created: 2023/03/26 19:26:44 by aaugu             #+#    #+#             */
+/*   Updated: 2023/03/26 19:29:44 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../include/so_long_bonus.h"
 
-void	fill_path(char **map, int x, int y, t_check *check);
-t_bool	all_elements_reacheable(t_check *check);
+void	fill_path_bonus(char **map, int x, int y, t_check *check);
+t_bool	all_elements_reacheable_bonus(t_check *check);
 
-t_bool	is_solvable(char **map, t_game *game)
+t_bool	is_solvable_bonus(char **map, t_game *game)
 {
 	game->check.map = ft_copy_dptr((const char **)map, game->map.h);
 	if (!game->check.map)
 		return (0);
 	game->check.apple = game->nb.apple;
-	fill_path(game->check.map, game->map.cat_x, game->map.cat_y, &game->check);
+	fill_path_bonus(game->check.map, game->map.cat_x, game->map.cat_y, \
+	&game->check);
 	ft_free_dptr(game->check.map, game->map.h);
-	if (all_elements_reacheable(&game->check) == FALSE)
+	if (all_elements_reacheable_bonus(&game->check) == FALSE)
 		return (0);
 	return (1);
 }
 
-void	fill_path(char **map, int x, int y, t_check *check)
+void	fill_path_bonus(char **map, int x, int y, t_check *check)
 {
 	if (map[y][x] == 'C' || map[y][x] == 'E' || map[y][x] == 'P' || \
 		map[y][x] == '0')
@@ -50,25 +51,12 @@ void	fill_path(char **map, int x, int y, t_check *check)
 	return ;
 }
 
-t_bool	all_elements_reacheable(t_check *check)
+t_bool	all_elements_reacheable_bonus(t_check *check)
 {
-	if (check->exit != 0)
+	if (check->slime != 0)
 	{
-		ft_printf("Error\nExit can't be reached. ");
+		ft_printf("Error\nEnemy can't be encountered. ");
 		return (0);
 	}
-	if (check->apple != 0)
-	{
-		ft_printf("Error\nAll apples can't be reached. ");
-		return (0);
-	}
-	if (BONUS)
-	{
-		if (check->slime != 0)
-		{
-			ft_printf("Error\nEnemy can't be encountered. ");
-			return (0);
-		}
-	}
-	return (1);
+	return (all_elements_reacheable(check));
 }

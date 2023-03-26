@@ -5,6 +5,9 @@ FLAGS = -Wall -Wextra -Werror
 
 INCLUDE = -I include -I libft -I mlx
 MLX_LIB = -L mlx -lmlx -framework OpenGL -framework AppKit
+# INCLUDE = -I include -I libft -I mlx_linux -O3
+# MLX_LIB = -L mlx_linux -lmlx_Linux -Imlx_linux -lXext -lX11 -lm -lz
+
 LIB = -Llibft -lft $(MLX_LIB)
 
 MLX = mlx/libmlx.a
@@ -38,15 +41,20 @@ all:		$(NAME)
 
 $(NAME):	$(MLX) $(LIBFT) $(OBJS)
 			@echo " [ .. ] | Compiling so_long.."
-			$(CC) $(FLAGS) $(LIB) $(OBJS) -o $(NAME)
+			$(CC) $(FLAGS) $(OBJS) $(LIB) -o $(NAME)
 			@echo " [ OK ] | so_long ready!"
+
+# $(MLX):
+# 			@echo " [ .. ] | Compiling minilibx.."
+# 			@make -s -C mlx
+# 			@echo " [ OK ] | Minilibx ready!"
 
 $(MLX):
 			@echo " [ .. ] | Compiling minilibx.."
-			@make -s -C mlx
+			@make -s -C mlx_linux
 			@echo " [ OK ] | Minilibx ready!"
 
-$(LIBFT):	
+$(LIBFT):
 			@echo " [ .. ] | Compiling libft.."
 			@make -s -C libft
 			@echo " [ OK ] | Libft ready!"
@@ -56,7 +64,7 @@ bonus:		$(MLX) $(LIBFT) $(OBJS_B)
 			$(CC) $(FLAGS) $(LIB) $(OBJS_B) -o $(NAME)
 			@echo " [ OK ] | so_long with bonus ready!"
 
-clean:		
+clean:
 			@echo " [ .. ] | Cleaning objects.."
 			@make -s -C libft clean
 			@make -s -C mlx clean

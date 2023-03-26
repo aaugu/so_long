@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 12:03:34 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/02 11:15:37 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/26 14:54:11 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,17 @@
 # include <strings.h>
 # include <unistd.h>
 
+#define TRUE 1
+#define FALSE 0
+
+typedef int t_bool;
+
 /* ---------------	LISTS	--------------- */
 typedef struct s_list
 {
-	void			*content;
-	struct s_list	*next;
-}					t_list;
+	void	*content;
+	struct	s_list *next;
+} 			t_list;
 
 t_list	*ft_lstnew(void *content);
 void	ft_lstadd_front(t_list **lst, t_list *new);

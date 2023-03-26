@@ -6,11 +6,12 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 09:42:59 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/02 10:04:51 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/26 15:28:30 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long_bonus.h"
+#include "../include/game.h"
 
 int	main(int argc, char **argv)
 {
@@ -34,4 +35,3 @@ int	main(int argc, char **argv)
 	free(game);
 	return (0);
 }
-

@@ -6,11 +6,25 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 13:59:01 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/26 15:35:58 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/02 09:47:52 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../include/so_long_bonus.h"
+
+t_bool	is_closed_horizontal(char *map)
+{
+	int	x;
+
+	x = 0;
+	while (map[x])
+	{
+		if (map[x] != '1')
+			return (0);
+		x++;
+	}
+	return (1);
+}
 
 t_bool	are_elements_valid(char **map, t_game *game)
 {

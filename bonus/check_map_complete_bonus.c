@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 19:27:03 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/26 19:32:56 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/27 10:24:26 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ t_bool	is_complete_and_valid_bonus(char **map, t_game *game)
 	}
 	if (is_complete_bonus(&game->check, &game->nb) == FALSE)
 		return (0);
+	return (1);
 }
 
 t_bool	are_elements_valid_bonus(char **map, t_game *game)
@@ -64,4 +65,5 @@ t_bool	is_complete_bonus(t_check *check, t_nb *nb)
 		ft_printf("Error\nNo enemy. ");
 		return (0);
 	}
+	return (1);
 }

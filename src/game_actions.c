@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 13:27:50 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/27 00:41:11 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/27 10:01:28 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	action(t_game *game, int x, int y);
 void	move_cat(t_game *game, int x, int y);
+void	collect_apple(t_game *game, int x, int y);
+void	victory(t_game *game);
 
 int	key_hook(int keycode, t_game *game)
 {

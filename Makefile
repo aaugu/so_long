@@ -4,8 +4,8 @@ CC = gcc
 FLAGS = -Wall -Wextra -Werror
 
 
-INCLUDE = -I include/game.h -I include/so_long.h -I libft -I mlx
-INCLUDE_BONUS = -I include/game.h -I include/so_long_bonus.h -I libft -I mlx
+INCLUDE = -I include/so_long.h -I libft -I mlx
+INCLUDE_BONUS = -I include/so_long_bonus.h -I libft -I mlx
 MLX_LIB = -L mlx -lmlx -framework OpenGL -framework AppKit
 
 LIB = -Llibft -lft $(MLX_LIB)
@@ -15,45 +15,46 @@ LIBFT = libft/libft.a
 
 RM = rm -f
 
-SRCS =	./src/so_long.c \
-		./src/check_map_file.c \
-		./src/check_map_parsing.c \
-		./src/check_map_requirements.c \
-		./src/check_map_complete.c \
-		./src/check_map_solvable.c \
-		./src/game_init.c \
-		./src/game_display.c \
-		./src/game_actions.c \
+MAIN = 		./src/so_long.c
+SRCS_F =	./src/check_map_file.c \
+			./src/check_map_parsing.c \
+			./src/check_map_requirements.c \
+			./src/check_map_complete.c \
+			./src/check_map_solvable.c \
+			./src/game_init.c \
+			./src/game_display.c \
+			./src/game_actions.c \
+			./src/error_exit.c
 
-OBJS = ${SRCS:%.c=%.o}
+SRCS = $(MAIN) $(SRCS_F)
+OBJS = $(SRCS:%.c=%.o)
 
 BONUS =	./bonus/so_long_bonus.c \
-		./src/check_map_parsing.c \
-		./bonus/check_map_parsing.c \
-		./src/check_map_complete.c \
-		./bonus/check_map_complete.c \
-		./src/check_map_solvable.c \
-		./bonus/check_map_solvable.c \
+		./bonus/check_map_file_bonus.c \
+		./bonus/check_map_requirements_bonus.c \
+		./bonus/check_map_complete_bonus.c \
+		./bonus/check_map_solvable_bonus.c \
+		./bonus/game_init_bonus.c \
+		./bonus/game_display_bonus.c \
+		./bonus/game_actions_bonus.c
 
-OBJS_B = ${BONUS:%.c=%.o}
+SRCS_B = $(SRCS_F) $(BONUS)
+OBJS_B = $(SRCS_B:%.c=%.o)
 
 %.o : %.c
-	ifdef ($(MAKECMDGOALS), bonus)
-		$(CC) $(FLAGS) $(INCLUDE_BONUS) -c $< -o $@
-	else
-		$(CC) $(FLAGS) $(INCLUDE) -c $< -o $@
-	endif
+	$(CC) $(FLAGS) -c $< -o $@
+
 all:		$(NAME)
 
-$(NAME):	$(LIBFT) $(OBJS)
+$(NAME):	$(MLX) $(LIBFT) $(OBJS)
 			@echo " [ .. ] | Compiling so_long.."
-			$(CC) $(FLAGS) $(OBJS) $(LIB) -o $(NAME)
+			$(CC) $(FLAGS) $(INCLUDE) $(OBJS) $(LIB) -o $(NAME)
 			@echo " [ OK ] | so_long ready!"
 
-bonus:		$(LIBFT) $(OBJS_B)
+bonus:		$(MLX) $(LIBFT) $(OBJS_B)
 			@echo " [ .. ] | Compiling so_long.."
-			$(CC) $(FLAGS) $(OBJS_B) $(LIB) -o $(NAME)
-			@echo " [ OK ] | so_long ready!"
+			$(CC) $(FLAGS) $(INCLUDE_BONUS) $(OBJS_B) $(LIB) -o $(NAME)
+			@echo " [ OK ] | so_long bonus ready!"
 
 $(MLX):
 			@echo " [ .. ] | Compiling minilibx.."
@@ -80,4 +81,4 @@ fclean: 	clean
 
 re: 		fclean all
 
-.PHONY:		all clean fclean re
+.PHONY:		all bonus clean fclean re

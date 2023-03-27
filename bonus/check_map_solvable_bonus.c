@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 19:26:44 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/26 19:29:44 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/27 10:24:48 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,10 @@ void	fill_path_bonus(char **map, int x, int y, t_check *check)
 		if (map[y][x] == 'S')
 			check->slime--;
 		map[y][x] = 'O';
-		fill_path(map, x + 1, y, check);
-		fill_path(map, x, y + 1, check);
-		fill_path(map, x, y - 1, check);
-		fill_path(map, x - 1, y, check);
+		fill_path_bonus(map, x + 1, y, check);
+		fill_path_bonus(map, x, y + 1, check);
+		fill_path_bonus(map, x, y - 1, check);
+		fill_path_bonus(map, x - 1, y, check);
 	}
 	return ;
 }

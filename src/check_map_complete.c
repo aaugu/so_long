@@ -6,13 +6,15 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 13:59:01 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/27 00:40:28 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/27 10:00:12 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
 t_bool	are_elements_valid(char **map, t_game *game);
+t_bool	is_complete(t_check *check, t_nb *nb);
+void	set_player_data(t_check *check, t_map *map, int x, int y);
 
 t_bool	is_complete_and_valid(char **map, t_game *game)
 {

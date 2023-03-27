@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 13:27:50 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/27 00:35:38 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/27 10:25:08 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ void	action_bonus(t_game *game, int x, int y)
 		endgame(game);
 	}
 	new_display(game);
-
 }
 
 void	move_cat_bonus(t_game *game, int x, int y)
@@ -67,7 +66,7 @@ void	new_display(t_game *game)
 {
 	char	*moves;
 
-	game_display(game->mlx, game->map, game->tileset);
+	game_display_bonus(game->mlx, game->map, game->tileset);
 	moves = ft_itoa(game->nb.moves);
 	if (!moves)
 		return (error_exit(game, "Error\nSomething went wrong."));

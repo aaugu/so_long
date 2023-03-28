@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long_bonus.c                                    :+:      :+:    :+:   */
+/*   error_exit_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 14:09:59 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/28 15:36:08 by aaugu            ###   ########.fr       */
+/*   Created: 2023/03/28 15:11:54 by aaugu             #+#    #+#             */
+/*   Updated: 2023/03/28 15:14:43 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long_bonus.h"
 
-int	main(int argc, char **argv)
+void	error_exit_bonus(char *message)
 {
-	t_game	game;
+	if (message)
+		ft_printf("%s", message);
+	endgame_bonus();
+}
 
-	if (argc != 2)
-	{
-		ft_printf("Error\nWrong number of arguments.\n");
-		return (0);
-	}
-	game.map.layout = NULL;
-	if (!is_all_valid_bonus(argv[1], &game))
-		return (0);
-	game_init_bonus(&game);
-	mlx_key_hook(game.mlx.win, key_hook_bonus, &game);
-	mlx_hook(game.mlx.win, 17, 0, endgame_bonus, &game);
-	mlx_loop(game.mlx.mlx);
-	return (0);
+int	endgame_bonus(void)
+{
+	ft_printf("Thanks for trying so_long.\n");
+	exit(0);
 }

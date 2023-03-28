@@ -6,13 +6,22 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 19:26:38 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/28 14:16:21 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/28 15:07:56 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long_bonus.h"
 
+void	display_bonus(t_mlx mlx, t_map map, t_tileset tileset);
+
 void	game_display_bonus(t_mlx mlx, t_map map, t_tileset tileset)
+{
+	display_bonus(mlx, map, tileset);
+	mlx_string_put(mlx.mlx, mlx.win, TILE_W, mlx.h - (TILE_H / 2), 0xFFFFFF, \
+	"Moves : ");
+}
+
+void	display_bonus(t_mlx mlx, t_map map, t_tileset tileset)
 {
 	int	x;
 	int	y;
@@ -39,6 +48,4 @@ void	game_display_bonus(t_mlx mlx, t_map map, t_tileset tileset)
 		x = 0;
 		y++;
 	}
-	mlx_string_put(mlx.mlx, mlx.win, TILE_W, mlx.h - (TILE_H / 2), 0xFFFFFF, \
-	"Moves : ");
 }

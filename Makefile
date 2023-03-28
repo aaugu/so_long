@@ -36,7 +36,8 @@ BONUS =	./bonus/so_long_bonus.c \
 		./bonus/check_map_solvable_bonus.c \
 		./bonus/game_init_bonus.c \
 		./bonus/game_display_bonus.c \
-		./bonus/game_actions_bonus.c
+		./bonus/game_actions_bonus.c \
+		./bonus/error_exit_bonus.c
 
 SRCS_B = $(SRCS_F) $(BONUS)
 OBJS_B = $(SRCS_B:%.c=%.o)
@@ -80,5 +81,7 @@ fclean: 	clean
 			@echo " [ OK ] | Everything is clean!"
 
 re: 		fclean all
+
+reb:		fclean bonus
 
 .PHONY:		all bonus clean fclean re

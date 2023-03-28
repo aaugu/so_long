@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 13:27:50 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/27 10:01:28 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/28 14:57:07 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	key_hook(int keycode, t_game *game)
 	if (keycode == W || keycode == UP)
 		action(game, 0, -1);
 	if (keycode == ESC)
-		endgame(game);
+		endgame(&game->map);
 	return (0);
 }
 
@@ -75,5 +75,5 @@ void	victory(t_game *game)
 {
 	game->nb.moves++;
 	ft_printf("Moves > %d - Congratulations!\n", game->nb.moves, game->nb.apple);
-	endgame(game);
+	endgame(&game->map);
 }

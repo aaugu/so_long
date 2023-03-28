@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 10:08:09 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/28 13:32:10 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/28 15:22:31 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,8 +109,6 @@ t_bool	all_elements_reacheable(t_check *check);
 
 /* ---------------	GAME INIT	--------------- */
 void	game_init_bonus(t_game *game);
-void	set_mlx(t_mlx *mlx, t_map map);
-void	set_tileset(t_tileset *tileset, void *mlx);
 void	set_data(t_nb *nb);
 
 /* ---------------	GAME DISPLAY	--------------- */
@@ -124,7 +122,7 @@ void	collect_apple(t_game *game, int x, int y);
 void	victory(t_game *game);
 
 /* ---------------	ERRORS AND EXIT	--------------- */
-void	error_exit(t_game *game, char *message);
-int		endgame(t_game *game);
+void	error_exit_bonus(char *message);
+int		endgame_bonus(void);
 
 #endif

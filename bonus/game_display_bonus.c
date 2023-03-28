@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 19:26:38 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/27 10:57:26 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/28 14:16:21 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,6 @@ void	game_display_bonus(t_mlx mlx, t_map map, t_tileset tileset)
 		x = 0;
 		y++;
 	}
-	mlx_string_put(mlx.mlx, mlx.win, TILE_W, mlx.h, 0, "Moves : ");
+	mlx_string_put(mlx.mlx, mlx.win, TILE_W, mlx.h - (TILE_H / 2), 0xFFFFFF, \
+	"Moves : ");
 }

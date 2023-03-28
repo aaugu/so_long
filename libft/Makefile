@@ -6,7 +6,7 @@
 #    By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/24 12:03:36 by aaugu             #+#    #+#              #
-#    Updated: 2023/03/02 11:05:38 by aaugu            ###   ########.fr        #
+#    Updated: 2023/03/28 11:33:48 by aaugu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ FT_PRINTF_SRCS = $(addprefix ft_printf/, $(FT_PRINTF_FILES))
 GET_NEXT_LINE_FILES = get_next_line.c
 GET_NEXT_LINE_SRCS = $(addprefix get_next_line/, $(GET_NEXT_LINE_FILES))
 
-UTILS_FILES = ft_strcmp.c ft_free_dptr.c ft_copy_dptr.c
+UTILS_FILES = ft_strcmp.c ft_strs_utils.c
 UTILS_SRCS = $(addprefix utils/, $(UTILS_FILES))
 
 SRCS = $(LIBFT_SRCS) $(FT_PRINTF_SRCS) $(GET_NEXT_LINE_SRCS) $(UTILS_SRCS)

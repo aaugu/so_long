@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 12:03:34 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/26 14:54:11 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/28 11:35:30 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ int		ft_tolower(int c);
 size_t	ft_strlen(const char *s);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
+int		ft_strs_len(char **strs);
 int		ft_strcmp(const char *s1, const char *s2);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strdup(const char *s1);
@@ -68,9 +69,9 @@ char	*ft_strtrim(char const *s1, char const *set);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	**ft_split(char const *s, char c);
-char	**ft_copy_dptr(const char **src, int size);
-void	ft_free_dptr(char **strs, int size);
+char	**ft_strs_copy(const char **src, int size);
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
+void	ft_strs_free(char **strs, int size);
 
 /* ---------------	MEMORY	--------------- */
 int		ft_memcmp(const void *s1, const void *s2, size_t n);

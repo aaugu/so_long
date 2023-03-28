@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:09:59 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/27 10:28:39 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/28 11:58:20 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(int argc, char **argv)
 	}
 	game.map.layout = NULL;
 	if (!is_all_valid(argv[1], &game))
-		return (0);
+		error_exit(&game, NULL);
 	game_init(&game);
 	mlx_key_hook(game.mlx.win, key_hook, &game);
 	mlx_hook(game.mlx.win, 17, 0, endgame, &game);

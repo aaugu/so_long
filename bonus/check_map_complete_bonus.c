@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 19:27:03 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/27 10:24:26 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/28 10:46:57 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ t_bool	are_elements_valid_bonus(char **map, t_game *game)
 				game->check.exit++;
 			else if (map[y][x] == 'P')
 				set_player_data(&game->check, &game->map, x, y);
-			if (map[y][x] == 'S')
+			else if (map[y][x] == 'S')
 				game->check.slime++;
 			else if (map[y][x] != '1' && map[y][x] != '0')
 				return (0);

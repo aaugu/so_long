@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 09:51:49 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/27 10:01:10 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/28 11:36:46 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ t_bool	all_elements_reacheable(t_check *check);
 
 t_bool	is_solvable(char **map, t_game *game)
 {
-	game->check.map = ft_copy_dptr((const char **)map, game->map.h);
+	game->check.map = ft_strs_copy((const char **)map, game->map.h);
 	if (!game->check.map)
 		return (0);
 	game->check.apple = game->nb.apple;
 	fill_path(game->check.map, game->map.cat_x, game->map.cat_y, &game->check);
-	ft_free_dptr(game->check.map, game->map.h);
+	ft_strs_free(game->check.map, game->map.h);
 	if (all_elements_reacheable(&game->check) == FALSE)
 		return (0);
 	return (1);

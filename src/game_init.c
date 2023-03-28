@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 10:06:30 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/27 10:01:59 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/28 14:25:31 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	set_tileset(t_tileset *tileset, void *mlx)
 
 	tileset->apple = mlx_xpm_file_to_image(mlx, "imgs/apple.xpm", &s, &s);
 	tileset->cat = mlx_xpm_file_to_image(mlx, "imgs/cat.xpm", &s, &s);
-	tileset->exit = mlx_xpm_file_to_image(mlx, "imgs/exit_c.xpm", &s, &s);
+	tileset->exit = mlx_xpm_file_to_image(mlx, "imgs/exit.xpm", &s, &s);
 	tileset->grass = mlx_xpm_file_to_image(mlx, "imgs/grass.xpm", &s, &s);
 	tileset->wall = mlx_xpm_file_to_image(mlx, "imgs/wall.xpm", &s, &s);
 }

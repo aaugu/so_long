@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 10:08:09 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/27 10:59:55 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/28 13:32:10 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,7 @@ void	set_data(t_nb *nb);
 
 /* ---------------	GAME DISPLAY	--------------- */
 void	game_display_bonus(t_mlx mlx, t_map map, t_tileset tileset);
+void	game_display(t_mlx mlx, t_map map, t_tileset tileset);
 void	put_image(t_mlx mlx, void *image, int x, int y);
 
 /* ---------------	GAME ACTIONS	--------------- */

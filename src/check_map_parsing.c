@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 10:24:53 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/26 16:18:37 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/28 11:36:27 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ char	**fill_map(const char *filename, int line_nb)
 		free(line);
 		if (!map[i])
 		{
-			ft_free_dptr(map, line_nb);
+			ft_strs_free(map, line_nb);
 			return (NULL);
 		}
 		i++;

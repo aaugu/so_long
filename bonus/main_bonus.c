@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 18:51:44 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/29 19:52:19 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/29 20:30:15 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	map_data_init(t_game *game);
 int	main(int argc, char **argv)
 {
 	t_game	game;
-	int i = 0;
 
 	if (argc != 2)
 		error_exit(&game, "Error\nWrong number of arguments.\n");
@@ -30,13 +29,11 @@ int	main(int argc, char **argv)
 	map_data_init(&game);
 	if (is_map_valid(game.map.layout, &game) == FALSE)
 		error_exit(&game, "Try again with a valid map.\n");
-	while (i < game.map.h)
-		ft_printf("%s\n", game.map.layout[i++]);
-	// game_init(&game);
-	// game_display(game);
-	// mlx_key_hook(game.mlx.win, key_hook, &game);
-	// mlx_hook(game.mlx.win, 17, 0, endgame, &game);
-	// mlx_loop(game.mlx.mlx);
+	game_init(&game);
+	game_display(&game);
+	mlx_key_hook(game.mlx.win, key_hook, &game);
+	mlx_hook(game.mlx.win, 17, 0, endgame, &game);
+	mlx_loop(game.mlx.mlx);
 	return (0);
 }
 
@@ -64,7 +61,7 @@ void	map_data_init(t_game *game)
 	game->check.slime = 0;
 }
 
-void put_image(t_mlx mlx, void *image, int x, int y)
+void	put_image(t_mlx mlx, void *image, int x, int y)
 {
 	mlx_put_image_to_window(mlx.mlx, mlx.win, image, x * TILE_W, y * TILE_H);
 }

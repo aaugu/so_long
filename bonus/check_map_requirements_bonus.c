@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 19:26:52 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/29 19:55:08 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/29 20:29:14 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ t_bool	is_map_valid(char **map, t_game *game)
 		return (0);
 	return (1);
 }
+
 t_bool	is_rect(char **map, t_game *game)
 {
 	int	x;

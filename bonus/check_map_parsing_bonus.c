@@ -6,19 +6,19 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 18:37:39 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/29 18:37:54 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/29 20:29:02 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long_bonus.h"
 
-int count_lines(const char *filename);
-char **fill_map(const char *filename, int line_nb);
+int		count_lines(const char *filename);
+char	**fill_map(const char *filename, int line_nb);
 
-char **map_parsing(const char *filename)
+char	**map_parsing(const char *filename)
 {
-	char **map;
-	int line_nb;
+	char	**map;
+	int		line_nb;
 
 	line_nb = count_lines(filename);
 	if (!line_nb)
@@ -29,11 +29,11 @@ char **map_parsing(const char *filename)
 	return (map);
 }
 
-int count_lines(const char *filename)
+int	count_lines(const char *filename)
 {
-	int fd;
-	int count;
-	char *line;
+	int		fd;
+	int		count;
+	char	*line;
 
 	count = 0;
 	fd = open(filename, O_RDONLY);
@@ -47,7 +47,7 @@ int count_lines(const char *filename)
 	{
 		line = get_next_line(fd);
 		if (!line)
-			break;
+			break ;
 		free(line);
 		count++;
 	}
@@ -57,12 +57,12 @@ int count_lines(const char *filename)
 	return (count);
 }
 
-char **fill_map(const char *filename, int line_nb)
+char	**fill_map(const char *filename, int line_nb)
 {
-	int i;
-	int fd;
-	char *line;
-	char **map;
+	int		i;
+	int		fd;
+	char	*line;
+	char	**map;
 
 	map = (char **)malloc(sizeof(char *) * (line_nb + 1));
 	if (!map)

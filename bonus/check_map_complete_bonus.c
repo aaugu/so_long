@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 19:27:03 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/29 19:54:07 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/29 20:27:48 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_bool	are_elements_expected(char **map, t_game *game);
 t_bool	is_complete(t_check *check, t_nb *nb);
-void 	set_player_data(t_game *game, int x, int y);
+void	set_player_data(t_game *game, int x, int y);
 void	set_exit_data(t_check *check, t_map *map, int x, int y);
 
 t_bool	is_complete_and_expected(char **map, t_game *game)

@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 19:26:38 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/29 19:50:03 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/29 20:30:31 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	display_base_map(t_mlx mlx, t_map map, t_tileset tileset);
 void	display_exit(t_mlx mlx, t_map map, t_tileset tileset, int nb_apple);
-void 	display_player(t_mlx mlx, t_tileset tileset, t_map map, t_move *move);
+void	display_player(t_mlx mlx, t_tileset tileset, t_map map, t_move *move);
 void	display_moves(t_game *game, t_mlx mlx, int nb_moves);
 
 void	game_display(t_game *game)
@@ -50,7 +50,7 @@ void	display_base_map(t_mlx mlx, t_map map, t_tileset tileset)
 	}
 }
 
-void display_exit(t_mlx mlx, t_map map, t_tileset tileset, int nb_apple)
+void	display_exit(t_mlx mlx, t_map map, t_tileset tileset, int nb_apple)
 {
 	if (nb_apple == 0)
 		put_image(mlx, tileset.exit_o, map.exit_x, map.exit_y);
@@ -58,7 +58,7 @@ void display_exit(t_mlx mlx, t_map map, t_tileset tileset, int nb_apple)
 		put_image(mlx, tileset.exit, map.exit_x, map.exit_y);
 }
 
-void 	display_player(t_mlx mlx, t_tileset tileset, t_map map, t_move *move)
+void	display_player(t_mlx mlx, t_tileset tileset, t_map map, t_move *move)
 {
 	if (move->down == TRUE)
 	{

@@ -6,24 +6,23 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 10:06:30 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/28 15:22:44 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/29 19:51:59 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long_bonus.h"
 
-void	set_mlx_bonus(t_mlx *mlx, t_map map);
-void	set_tileset_bonus(t_tileset *tileset, void *mlx);
+void	set_mlx(t_mlx *mlx, t_map map);
+void	set_tileset(t_tileset *tileset, void *mlx);
 
-void	game_init_bonus(t_game *game)
+void	game_init(t_game *game)
 {
-	set_mlx_bonus(&game->mlx, game->map);
-	set_tileset_bonus(&game->tileset, game->mlx.mlx);
-	set_data(&game->nb);
-	game_display_bonus(game->mlx, game->map, game->tileset);
+	set_mlx(&game->mlx, game->map);
+	set_tileset(&game->tileset, game->mlx.mlx);
+	game->nb.moves = 0;
 }
 
-void	set_mlx_bonus(t_mlx *mlx, t_map map)
+void	set_mlx(t_mlx *mlx, t_map map)
 {
 	mlx->mlx = mlx_init();
 	mlx->w = TILE_W * map.w;
@@ -31,7 +30,7 @@ void	set_mlx_bonus(t_mlx *mlx, t_map map)
 	mlx->win = mlx_new_window(mlx->mlx, mlx->w, mlx->h, "so_long");
 }
 
-void	set_tileset_bonus(t_tileset *tileset, void *mlx)
+void	set_tileset(t_tileset *tileset, void *mlx)
 {
 	int	s;
 

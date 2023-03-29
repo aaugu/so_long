@@ -15,32 +15,30 @@ LIBFT = libft/libft.a
 
 RM = rm -f
 
-MAIN = 		./src/so_long.c
-SRCS_F =	./src/check_map_file.c \
-			./src/check_map_parsing.c \
-			./src/check_map_requirements.c \
-			./src/check_map_complete.c \
-			./src/check_map_solvable.c \
-			./src/game_init.c \
-			./src/game_display.c \
-			./src/game_actions.c \
-			./src/error_exit.c
+SRCS =	./src/so_long.c \
+		./src/check_map_file.c \
+		./src/check_map_parsing.c \
+		./src/check_map_requirements.c \
+		./src/check_map_complete.c \
+		./src/check_map_solvable.c \
+		./src/game_init.c \
+		./src/game_display.c \
+		./src/game_actions.c \
+		./src/error_exit.c
 
-SRCS = $(MAIN) $(SRCS_F)
 OBJS = $(SRCS:%.c=%.o)
 
 BONUS =	./bonus/so_long_bonus.c \
-		./bonus/check_map_file_bonus.c \
+		./bonus/check_map_parsing_bonus.c \
 		./bonus/check_map_requirements_bonus.c \
 		./bonus/check_map_complete_bonus.c \
 		./bonus/check_map_solvable_bonus.c \
 		./bonus/game_init_bonus.c \
 		./bonus/game_display_bonus.c \
 		./bonus/game_actions_bonus.c \
-		./bonus/error_exit_bonus.c
+		./bonus/error_exit_bonus.c \
 
-SRCS_B = $(SRCS_F) $(BONUS)
-OBJS_B = $(SRCS_B:%.c=%.o)
+OBJS_B = $(BONUS:%.c=%.o)
 
 %.o : %.c
 	$(CC) $(FLAGS) -c $< -o $@
@@ -52,10 +50,15 @@ $(NAME):	$(MLX) $(LIBFT) $(OBJS)
 			$(CC) $(FLAGS) $(INCLUDE) $(OBJS) $(LIB) -o $(NAME)
 			@echo " [ OK ] | so_long ready!"
 
-bonus:		$(MLX) $(LIBFT) $(OBJS_B)
+bonus:		$(LIBFT) $(OBJS_B)
 			@echo " [ .. ] | Compiling so_long.."
-			$(CC) $(FLAGS) $(INCLUDE_BONUS) $(OBJS_B) $(LIB) -o $(NAME)
+			$(CC) $(FLAGS) $(INCLUDE_BONUS) $(OBJS_B) -Llibft -lft -o $(NAME)
 			@echo " [ OK ] | so_long bonus ready!"
+
+# bonus:		$(MLX) $(LIBFT) $(OBJS_B)
+# 			@echo " [ .. ] | Compiling so_long.."
+# 			$(CC) $(FLAGS) $(INCLUDE_BONUS) $(OBJS_B) $(LIB) -o $(NAME)
+# 			@echo " [ OK ] | so_long bonus ready!"
 
 $(MLX):
 			@echo " [ .. ] | Compiling minilibx.."

@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 10:08:09 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/28 15:22:31 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/29 19:54:17 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,14 @@
 
 # include "../libft/include/libft.h"
 # include "../mlx/mlx.h"
+
+typedef struct s_mlx
+{
+	void	*mlx;
+	void	*win;
+	int		w;
+	int		h;
+}				t_mlx;
 
 typedef struct s_map
 {
@@ -41,6 +49,12 @@ typedef struct s_tileset
 	void	*wall;
 }				t_tileset;
 
+typedef struct s_nb
+{
+	int		apple;
+	int		moves;
+}				t_nb;
+
 typedef struct s_check
 {
 	int		apple;
@@ -50,19 +64,19 @@ typedef struct s_check
 	char	**map;
 }				t_check;
 
-typedef struct s_mlx
-{
-	void	*mlx;
-	void	*win;
-	int		w;
-	int		h;
-}				t_mlx;
-
 typedef struct s_nb
 {
 	int		apple;
 	int		moves;
 }				t_nb;
+
+typedef struct s_move
+{
+	t_bool		left;
+	t_bool		right;
+	t_bool		up;
+	t_bool		down;
+}				t_move;
 
 typedef struct s_game
 {
@@ -71,6 +85,7 @@ typedef struct s_game
 	t_tileset	tileset;
 	t_nb		nb;
 	t_check		check;
+	t_move		move;
 }				t_game;
 
 /* ---------------	TILES SIZE	--------------- */
@@ -88,41 +103,27 @@ typedef struct s_game
 # define UP 126
 # define ESC 53
 
-/* ---------------	FILE AND MAP REQUIREMENT CHECKS	--------------- */
-t_bool	is_all_valid_bonus(const char *filename, t_game *game);
-t_bool	is_extension_valid(const char *filename);
-void	map_data_init(t_game *game);
+/* ---------------	FILE AND MAP PARSING	--------------- */
 char	**map_parsing(const char *filename);
 
-t_bool	is_map_valid_bonus(char **map, t_game *game);
-t_bool	is_rect(char **map, t_game *game);
-t_bool	is_closed(char **map, t_game *game);
-t_bool	is_closed_horizontal(char *map);
-
-t_bool	is_complete_and_valid_bonus(char **map, t_game *game);
-void	set_player_data(t_check *check, t_map *map, int x, int y);
-t_bool	is_complete(t_check *check, t_nb *nb);
-
-/* ---------------	MAP SOLVABLE CHECK	--------------- */
-t_bool	is_solvable_bonus(char **map, t_game *game);
-t_bool	all_elements_reacheable(t_check *check);
+/* ---------------	MAP CHECKS	--------------- */
+t_bool	is_map_valid(char **map, t_game *game);
+t_bool	is_complete_and_expected(char **map, t_game *game);
+t_bool	is_solvable(char **map, t_game *game);
 
 /* ---------------	GAME INIT	--------------- */
-void	game_init_bonus(t_game *game);
+void	game_init(t_game *game);
 void	set_data(t_nb *nb);
 
 /* ---------------	GAME DISPLAY	--------------- */
-void	game_display_bonus(t_mlx mlx, t_map map, t_tileset tileset);
-void	game_display(t_mlx mlx, t_map map, t_tileset tileset);
+void	game_display(t_game *game);
 void	put_image(t_mlx mlx, void *image, int x, int y);
 
 /* ---------------	GAME ACTIONS	--------------- */
-int		key_hook_bonus(int keycode, t_game *game);
-void	collect_apple(t_game *game, int x, int y);
-void	victory(t_game *game);
+int		key_hook(int keycode, t_game *game);
 
 /* ---------------	ERRORS AND EXIT	--------------- */
-void	error_exit_bonus(char *message);
-int		endgame_bonus(void);
+void	error_exit(t_game *game, char *message);
+int		endgame(t_game *game);
 
 #endif

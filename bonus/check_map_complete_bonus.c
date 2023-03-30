@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 19:27:03 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/29 20:27:48 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/30 11:35:22 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,11 @@ t_bool	is_complete(t_check *check, t_nb *nb)
 {
 	if (check->exit != 1)
 		ft_printf("Error\nExit is missing. ");
-	if (check->cat != 1)
+	else if (check->cat != 1)
 		ft_printf("Error\nPlayer is missing. ");
-	if (nb->apple < 1)
+	else if (nb->apple < 1)
 		ft_printf("Error\nNo collectible. ");
-	if (check->slime < 1)
+	else if (check->slime < 1)
 		ft_printf("Error\nNo enemy. ");
 	if (check->exit != 1 || check->cat != 1 || nb->apple < 1 || \
 		check->slime < 1)

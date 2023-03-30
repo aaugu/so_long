@@ -15,8 +15,7 @@ LIBFT = libft/libft.a
 
 RM = rm -f
 
-SRCS =	./src/so_long.c \
-		./src/check_map_file.c \
+SRCS =	./src/main.c \
 		./src/check_map_parsing.c \
 		./src/check_map_requirements.c \
 		./src/check_map_complete.c \
@@ -28,7 +27,7 @@ SRCS =	./src/so_long.c \
 
 OBJS = $(SRCS:%.c=%.o)
 
-BONUS =	./bonus/so_long_bonus.c \
+BONUS =	./bonus/main_bonus.c \
 		./bonus/check_map_parsing_bonus.c \
 		./bonus/check_map_requirements_bonus.c \
 		./bonus/check_map_complete_bonus.c \
@@ -50,15 +49,15 @@ $(NAME):	$(MLX) $(LIBFT) $(OBJS)
 			$(CC) $(FLAGS) $(INCLUDE) $(OBJS) $(LIB) -o $(NAME)
 			@echo " [ OK ] | so_long ready!"
 
-bonus:		$(LIBFT) $(OBJS_B)
-			@echo " [ .. ] | Compiling so_long.."
-			$(CC) $(FLAGS) $(INCLUDE_BONUS) $(OBJS_B) -Llibft -lft -o $(NAME)
-			@echo " [ OK ] | so_long bonus ready!"
-
-# bonus:		$(MLX) $(LIBFT) $(OBJS_B)
+# bonus:		$(LIBFT) $(OBJS_B)
 # 			@echo " [ .. ] | Compiling so_long.."
-# 			$(CC) $(FLAGS) $(INCLUDE_BONUS) $(OBJS_B) $(LIB) -o $(NAME)
+# 			$(CC) $(FLAGS) $(INCLUDE_BONUS) $(OBJS_B) -Llibft -lft -o $(NAME)
 # 			@echo " [ OK ] | so_long bonus ready!"
+
+bonus:		$(MLX) $(LIBFT) $(OBJS_B)
+			@echo " [ .. ] | Compiling so_long.."
+			$(CC) $(FLAGS) $(INCLUDE_BONUS) $(OBJS_B) $(LIB) -o $(NAME)
+			@echo " [ OK ] | so_long bonus ready!"
 
 $(MLX):
 			@echo " [ .. ] | Compiling minilibx.."

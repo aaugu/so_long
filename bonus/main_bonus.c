@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 18:51:44 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/29 20:30:15 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/30 14:02:51 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 t_bool	is_extension_valid(const char *filename);
 void	map_data_init(t_game *game);
+int		key_hook(int keycode, t_game *game);
 
 int	main(int argc, char **argv)
 {
@@ -59,9 +60,27 @@ void	map_data_init(t_game *game)
 	game->check.exit = 0;
 	game->check.cat = 0;
 	game->check.slime = 0;
+	game->map.w = ft_strlen(game->map.layout[0]);
+	game->map.h = ft_strs_len(game->map.layout);
 }
 
 void	put_image(t_mlx mlx, void *image, int x, int y)
 {
 	mlx_put_image_to_window(mlx.mlx, mlx.win, image, x * TILE_W, y * TILE_H);
+}
+
+int	key_hook(int keycode, t_game *game)
+{
+	if (keycode == A || keycode == LEFT)
+		action(game, -1, 0);
+	else if (keycode == S || keycode == DOWN)
+		action(game, 0, 1);
+	else if (keycode == D || keycode == RIGHT)
+		action(game, 1, 0);
+	else if (keycode == W || keycode == UP)
+		action(game, 0, -1);
+	else if (keycode == ESC)
+		endgame(game);
+	game_display(game);
+	return (0);
 }

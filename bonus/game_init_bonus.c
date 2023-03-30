@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 10:06:30 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/29 19:51:59 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/30 11:49:17 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,14 @@ void	game_init(t_game *game)
 	set_mlx(&game->mlx, game->map);
 	set_tileset(&game->tileset, game->mlx.mlx);
 	game->nb.moves = 0;
+	game->move.down = 1;
 }
 
 void	set_mlx(t_mlx *mlx, t_map map)
 {
 	mlx->mlx = mlx_init();
 	mlx->w = TILE_W * map.w;
-	mlx->h = TILE_H * (map.h + 2);
+	mlx->h = TILE_H * map.h;
 	mlx->win = mlx_new_window(mlx->mlx, mlx->w, mlx->h, "so_long");
 }
 

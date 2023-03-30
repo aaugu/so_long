@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 19:26:38 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/29 20:30:31 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/30 13:32:48 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,8 @@ void	display_moves(t_game *game, t_mlx mlx, int nb_moves)
 	moves = ft_itoa(nb_moves);
 	if (!moves)
 		error_exit(game, "Something went wrong.");
-	mlx_string_put(mlx.mlx, mlx.win, TILE_W, TILE_H, 0xFFFFFF, "Moves : ");
-	mlx_string_put(mlx.mlx, mlx.win, TILE_W * 5, TILE_H, 0xFFFFFF, moves);
+	mlx_string_put(mlx.mlx, mlx.win, TILE_W * 0.5, TILE_H * 0.8, 0xFFFFFF, \
+	"Moves : ");
+	mlx_string_put(mlx.mlx, mlx.win, TILE_W * 4, TILE_H * 0.8, 0xFFFFFF, moves);
 	free(moves);
 }

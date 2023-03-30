@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_map_file.c                                   :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/28 16:05:48 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/28 11:47:37 by aaugu            ###   ########.fr       */
+/*   Created: 2023/03/30 14:10:34 by aaugu             #+#    #+#             */
+/*   Updated: 2023/03/30 14:13:42 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,25 @@
 t_bool	is_extension_valid(const char *filename);
 void	map_data_init(t_game *game);
 
-t_bool	is_all_valid(const char *filename, t_game *game)
+int	main(int argc, char **argv)
 {
-	if (is_extension_valid(filename) == FALSE)
+	t_game	game;
+
+	if (argc != 2)
+		error_exit(&game, "Error\nWrong number of arguments.\n");
+	if (is_extension_valid(argv[1]) == FALSE)
 		return (0);
-	map_data_init(game);
-	game->map.layout = map_parsing(filename);
-	if (!game->map.layout)
+	game.map.layout = map_parsing(argv[1]);
+	if (!game.map.layout)
 		return (0);
-	if (is_map_valid(game->map.layout, game) == FALSE)
-		error_exit(game, "Try again with a valid map.\n");
-	return (1);
+	map_data_init(&game);
+	if (is_map_valid(game.map.layout, &game) == FALSE)
+		error_exit(&game, "Try again with a valid map.\n");
+	game_init(&game);
+	mlx_key_hook(game.mlx.win, key_hook, &game);
+	mlx_hook(game.mlx.win, 17, 0, endgame, &game);
+	mlx_loop(game.mlx.mlx);
+	return (0);
 }
 
 t_bool	is_extension_valid(const char *filename)
@@ -49,4 +57,6 @@ void	map_data_init(t_game *game)
 	game->check.apple = 0;
 	game->check.exit = 0;
 	game->check.cat = 0;
+	game->map.w = ft_strlen(game->map.layout[0]);
+	game->map.h = ft_strs_len(game->map.layout);
 }

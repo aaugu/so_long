@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 10:13:06 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/28 15:10:56 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/30 14:12:16 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,14 @@
 
 # include "../libft/include/libft.h"
 # include "../mlx/mlx.h"
+
+typedef struct s_mlx
+{
+	void	*mlx;
+	void	*win;
+	int		w;
+	int		h;
+}				t_mlx;
 
 typedef struct s_map
 {
@@ -34,6 +42,12 @@ typedef struct s_tileset
 	void	*wall;
 }				t_tileset;
 
+typedef struct s_nb
+{
+	int		apple;
+	int		moves;
+}				t_nb;
+
 typedef struct s_check
 {
 	int		apple;
@@ -41,20 +55,6 @@ typedef struct s_check
 	int		exit;
 	char	**map;
 }				t_check;
-
-typedef struct s_mlx
-{
-	void	*mlx;
-	void	*win;
-	int		w;
-	int		h;
-}				t_mlx;
-
-typedef struct s_nb
-{
-	int		apple;
-	int		moves;
-}				t_nb;
 
 typedef struct s_game
 {
@@ -81,7 +81,6 @@ typedef struct s_game
 # define ESC 53
 
 /* ---------------	FILE AND MAP REQUIREMENTS CHECK	--------------- */
-t_bool	is_all_valid(const char *filename, t_game *game);
 char	**map_parsing(const char *filename);
 t_bool	is_map_valid(char **map, t_game *game);
 t_bool	is_complete_and_valid(char **map, t_game *game);

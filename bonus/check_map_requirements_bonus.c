@@ -6,19 +6,19 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 19:26:52 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/29 20:29:14 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/30 14:04:03 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long_bonus.h"
 
-t_bool	is_rect(char **map, t_game *game);
+t_bool	is_rect(char **map);
 t_bool	is_closed(char **map, t_game *game);
 t_bool	is_closed_horizontal(char *map);
 
 t_bool	is_map_valid(char **map, t_game *game)
 {
-	if (!is_rect(map, game))
+	if (!is_rect(map))
 	{
 		ft_printf("Error\nMap is not rectangular. ");
 		return (0);
@@ -28,17 +28,17 @@ t_bool	is_map_valid(char **map, t_game *game)
 		ft_printf("Error\nMap not closed by wall. ");
 		return (0);
 	}
-	if (!is_solvable(map, game))
-	{
-		ft_printf("Error\nMap not solvable. ");
-		return (0);
-	}
 	if (!is_complete_and_expected(map, game))
 		return (0);
+	if (!is_solvable(map, game))
+	{
+		ft_printf("Map not solvable. ");
+		return (0);
+	}
 	return (1);
 }
 
-t_bool	is_rect(char **map, t_game *game)
+t_bool	is_rect(char **map)
 {
 	int	x;
 	int	y;
@@ -55,8 +55,6 @@ t_bool	is_rect(char **map, t_game *game)
 	}
 	if (x == y)
 		return (0);
-	game->map.w = x;
-	game->map.h = y;
 	return (1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 19:26:44 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/29 19:51:39 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/30 13:27:59 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ t_bool	is_solvable(char **map, t_game *game)
 	if (!game->check.map)
 		return (0);
 	game->check.apple = game->nb.apple;
-	fill_path(game->check.map, game->map.cat_x, game->map.cat_y, \
-	&game->check);
+	fill_path(game->check.map, game->map.cat_x, game->map.cat_y, &game->check);
 	ft_strs_free(game->check.map, game->map.h);
 	if (all_elements_reacheable(&game->check) == FALSE)
 		return (0);
@@ -31,15 +30,15 @@ t_bool	is_solvable(char **map, t_game *game)
 
 void	fill_path(char **map, int x, int y, t_check *check)
 {
-	if (map[y][x] == 'C' || map[y][x] == 'E' || map[y][x] == 'P' || \
-		map[y][x] == '0' || map[y][x] == 'S')
+	if (map[y][x] == 'S')
+			check->slime--;
+	else if (map[y][x] == 'C' || map[y][x] == 'E' || map[y][x] == 'P' || \
+		map[y][x] == '0')
 	{
 		if (map[y][x] == 'C')
 			check->apple--;
 		if (map[y][x] == 'E')
 			check->exit--;
-		if (map[y][x] == 'S')
-			check->slime--;
 		map[y][x] = 'O';
 		fill_path(map, x + 1, y, check);
 		fill_path(map, x, y + 1, check);
@@ -53,11 +52,9 @@ t_bool	all_elements_reacheable(t_check *check)
 {
 	if (check->exit != 0)
 		ft_printf("Error\nExit can't be reached. ");
-	if (check->apple != 0)
+	else if (check->apple != 0)
 		ft_printf("Error\nAll apples can't be reached. ");
-	if (check->slime != 0)
-		ft_printf("Error\nEnemy can't be encountered. ");
-	if (check->slime != 0 || check->exit != 0 || check->apple != 0)
+	if (check->exit != 0 || check->apple != 0)
 		return (0);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 11:49:14 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/27 10:16:10 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/30 14:14:37 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,19 @@ t_bool	is_closed_horizontal(char *map);
 
 t_bool	is_map_valid(char **map, t_game *game)
 {
-	if (!is_rect(map, game))
+	if (is_rect(map, game) == FALSE)
 	{
 		ft_printf("Error\nMap is not rectangular. ");
 		return (0);
 	}
-	if (!is_closed(map, game))
+	if (is_closed(map, game) == FALSE)
 	{
 		ft_printf("Error\nMap not closed by wall. ");
 		return (0);
 	}
-	if (!is_complete_and_valid(map, game))
+	if (is_complete_and_valid(map, game) == FALSE)
 		return (0);
-	if (!is_solvable(map, game))
+	if (is_solvable(map, game) == FALSE)
 		return (0);
 	return (1);
 }

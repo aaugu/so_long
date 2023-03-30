@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 10:08:09 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/29 19:54:17 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/30 13:20:01 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,6 @@ typedef struct s_check
 	char	**map;
 }				t_check;
 
-typedef struct s_nb
-{
-	int		apple;
-	int		moves;
-}				t_nb;
-
 typedef struct s_move
 {
 	t_bool		left;
@@ -120,7 +114,7 @@ void	game_display(t_game *game);
 void	put_image(t_mlx mlx, void *image, int x, int y);
 
 /* ---------------	GAME ACTIONS	--------------- */
-int		key_hook(int keycode, t_game *game);
+void	action(t_game *game, int x, int y);
 
 /* ---------------	ERRORS AND EXIT	--------------- */
 void	error_exit(t_game *game, char *message);
